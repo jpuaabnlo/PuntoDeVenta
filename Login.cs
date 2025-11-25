@@ -21,6 +21,15 @@ namespace PuntoDeVenta
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
+            if (username == "admin" && password == "password")
+            {
+                frmMenu menu = new frmMenu();
+                menu.Show();
+            }
+            else
+            {
+                MessageBox.Show("Usuario no reconocido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
