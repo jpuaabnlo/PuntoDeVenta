@@ -35,6 +35,7 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.lblLogError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,20 +50,23 @@
             this.btnLogIn.Text = "Log In";
             this.btnLogIn.UseVisualStyleBackColor = false;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
+            this.btnLogIn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnLogIn_KeyUp);
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(274, 123);
+            this.txtUsername.Location = new System.Drawing.Point(274, 104);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(200, 22);
             this.txtUsername.TabIndex = 2;
+            this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyUp);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(274, 169);
+            this.txtPassword.Location = new System.Drawing.Point(274, 145);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(200, 22);
             this.txtPassword.TabIndex = 3;
+            this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
             // lblAppName
             // 
@@ -80,7 +84,7 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("Sylfaen", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(116, 123);
+            this.lblUsername.Location = new System.Drawing.Point(117, 101);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(95, 29);
             this.lblUsername.TabIndex = 5;
@@ -91,7 +95,7 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Sylfaen", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(116, 169);
+            this.lblPassword.Location = new System.Drawing.Point(117, 145);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(130, 29);
             this.lblPassword.TabIndex = 6;
@@ -108,6 +112,19 @@
             this.pbLogo.TabIndex = 1;
             this.pbLogo.TabStop = false;
             // 
+            // lblLogError
+            // 
+            this.lblLogError.AutoSize = true;
+            this.lblLogError.BackColor = System.Drawing.Color.Transparent;
+            this.lblLogError.Font = new System.Drawing.Font("Sylfaen", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogError.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblLogError.Location = new System.Drawing.Point(118, 174);
+            this.lblLogError.Name = "lblLogError";
+            this.lblLogError.Size = new System.Drawing.Size(322, 23);
+            this.lblLogError.TabIndex = 7;
+            this.lblLogError.Text = "Usuario no encontrado. Datos incorrectos.";
+            this.lblLogError.Visible = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -116,6 +133,7 @@
             this.BackgroundImage = global::PuntoDeVenta.Properties.Resources.FondoLogin1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(582, 253);
+            this.Controls.Add(this.lblLogError);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblAppName);
@@ -140,5 +158,6 @@
         private System.Windows.Forms.Label lblAppName;
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblPassword;
+        private System.Windows.Forms.Label lblLogError;
     }
 }

@@ -5,6 +5,7 @@
 
 # dotenv files
 .env
+DatosDeConexion.cs
 
 # User-specific files
 *.rsuser
