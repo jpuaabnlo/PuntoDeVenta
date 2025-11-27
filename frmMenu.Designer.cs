@@ -31,7 +31,6 @@
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.flpOpcionesMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.btnVentas = new System.Windows.Forms.Button();
-            this.btnRegistros = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnEmpleados = new System.Windows.Forms.Button();
@@ -44,23 +43,22 @@
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.Transparent;
             this.pnlMenu.Controls.Add(this.flpOpcionesMenu);
-            this.pnlMenu.Location = new System.Drawing.Point(0, 12);
+            this.pnlMenu.Location = new System.Drawing.Point(0, 125);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(150, 529);
+            this.pnlMenu.Size = new System.Drawing.Size(150, 300);
             this.pnlMenu.TabIndex = 0;
             // 
             // flpOpcionesMenu
             // 
             this.flpOpcionesMenu.BackColor = System.Drawing.Color.Transparent;
             this.flpOpcionesMenu.Controls.Add(this.btnVentas);
-            this.flpOpcionesMenu.Controls.Add(this.btnRegistros);
             this.flpOpcionesMenu.Controls.Add(this.btnReportes);
             this.flpOpcionesMenu.Controls.Add(this.btnProductos);
             this.flpOpcionesMenu.Controls.Add(this.btnEmpleados);
             this.flpOpcionesMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flpOpcionesMenu.Location = new System.Drawing.Point(0, 0);
             this.flpOpcionesMenu.Name = "flpOpcionesMenu";
-            this.flpOpcionesMenu.Size = new System.Drawing.Size(150, 529);
+            this.flpOpcionesMenu.Size = new System.Drawing.Size(150, 300);
             this.flpOpcionesMenu.TabIndex = 0;
             // 
             // btnVentas
@@ -71,19 +69,11 @@
             this.btnVentas.TabIndex = 0;
             this.btnVentas.Text = "Ventas";
             this.btnVentas.UseVisualStyleBackColor = true;
-            // 
-            // btnRegistros
-            // 
-            this.btnRegistros.Location = new System.Drawing.Point(3, 32);
-            this.btnRegistros.Name = "btnRegistros";
-            this.btnRegistros.Size = new System.Drawing.Size(75, 23);
-            this.btnRegistros.TabIndex = 1;
-            this.btnRegistros.Text = "Registros";
-            this.btnRegistros.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
             // 
             // btnReportes
             // 
-            this.btnReportes.Location = new System.Drawing.Point(3, 61);
+            this.btnReportes.Location = new System.Drawing.Point(3, 32);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Size = new System.Drawing.Size(75, 23);
             this.btnReportes.TabIndex = 2;
@@ -92,7 +82,7 @@
             // 
             // btnProductos
             // 
-            this.btnProductos.Location = new System.Drawing.Point(3, 90);
+            this.btnProductos.Location = new System.Drawing.Point(3, 61);
             this.btnProductos.Name = "btnProductos";
             this.btnProductos.Size = new System.Drawing.Size(75, 23);
             this.btnProductos.TabIndex = 3;
@@ -101,7 +91,7 @@
             // 
             // btnEmpleados
             // 
-            this.btnEmpleados.Location = new System.Drawing.Point(3, 119);
+            this.btnEmpleados.Location = new System.Drawing.Point(3, 90);
             this.btnEmpleados.Name = "btnEmpleados";
             this.btnEmpleados.Size = new System.Drawing.Size(75, 23);
             this.btnEmpleados.TabIndex = 4;
@@ -111,9 +101,9 @@
             // pnlContainer
             // 
             this.pnlContainer.BackColor = System.Drawing.Color.Transparent;
-            this.pnlContainer.Location = new System.Drawing.Point(169, 12);
+            this.pnlContainer.Location = new System.Drawing.Point(175, 5);
             this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1001, 529);
+            this.pnlContainer.Size = new System.Drawing.Size(1000, 540);
             this.pnlContainer.TabIndex = 1;
             // 
             // frmMenu
@@ -121,7 +111,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.BackgroundImage = global::PuntoDeVenta.Properties.Resources.FondoMenu;
             this.ClientSize = new System.Drawing.Size(1182, 553);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.pnlMenu);
@@ -139,7 +128,6 @@
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.FlowLayoutPanel flpOpcionesMenu;
         private System.Windows.Forms.Button btnVentas;
-        private System.Windows.Forms.Button btnRegistros;
         private System.Windows.Forms.Button btnReportes;
         private System.Windows.Forms.Button btnProductos;
         private System.Windows.Forms.Button btnEmpleados;
