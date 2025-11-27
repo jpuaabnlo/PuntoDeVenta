@@ -21,14 +21,48 @@ namespace PuntoDeVenta
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            if (username == "admin" && password == "password")
+            Conexion conexion = new Conexion();
+            Empleado empleado = conexion.FindUser(username, password);
+            if (empleado != null)
             {
                 frmMenu menu = new frmMenu();
                 menu.Show();
             }
             else
             {
-                MessageBox.Show("Usuario no reconocido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lblLogError.Visible = true;
+            }
+        }
+
+        private void txtUsername_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(lblLogError.Visible == true)
+            {
+                lblLogError.Visible = false;
+            }
+            if(e.KeyCode == Keys.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void txtPassword_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (lblLogError.Visible == true)
+            {
+                lblLogError.Visible = false;
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogIn_Click(sender, e);
+            }
+        }
+
+        private void btnLogIn_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                btnLogIn_Click(sender, e);
             }
         }
     }
