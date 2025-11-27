@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PuntoDeVenta
 {
-    public partial class frmMenu : Form
+    public partial class UC_Ventas : UserControl
     {
-        public frmMenu()
+        public UC_Ventas()
         {
             InitializeComponent();
-        }
-
-        private void btnVentas_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

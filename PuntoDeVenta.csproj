@@ -104,6 +104,7 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Libro.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

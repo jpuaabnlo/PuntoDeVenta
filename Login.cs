@@ -25,11 +25,20 @@ namespace PuntoDeVenta
             Empleado empleado = conexion.FindUser(username, password);
             if (empleado != null)
             {
-                frmMenu menu = new frmMenu();
-                menu.Show();
+                if (empleado.isActivo())
+                {
+                    frmMenu menu = new frmMenu();
+                    menu.Show();
+                }
+                else
+                {
+                    lblLogError.Text = "El usuario no está activo.";
+                    lblLogError.Visible = true;
+                }
             }
             else
             {
+                lblLogError.Text = "Usuario o contraseña incorrectos.";
                 lblLogError.Visible = true;
             }
         }

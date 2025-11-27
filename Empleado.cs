@@ -57,5 +57,9 @@ namespace PuntoDeVenta
         {
             return superUser;
         }
+        public bool isActivo()
+        {
+            return activo;
+        }
     }
 }
