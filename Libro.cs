@@ -10,9 +10,11 @@ namespace PuntoDeVenta
     {
         public string ISBN { get; private set; }
         public string Nombre { get; private set; }
+        public string Autor { get; private set; }
         public string Descripcion { get; private set; }
-        public double Precio { get; private set; }
+        public decimal Precio { get; private set; }
         public int Stock { get; private set; }
+        public bool Activo { get; private set; }
 
         /// <summary>
         /// Inicializa una nueva instancia de un Libro.
@@ -20,15 +22,15 @@ namespace PuntoDeVenta
         /// <param name="isbn">El identificador único (ISBN-13).</param>
         /// <param name="nombre">Título completo de la obra.</param>
         /// <param name="precio">Precio unitario en moneda local.</param>
-        public Libro(string isbn, string nombre, string descripcion, double precio, int stock)
+        public Libro(string isbn, string nombre, string autor, string descripcion, decimal precio, int stock, bool activo)
         {
-            // En C# las variables locales/parámetros usan camelCase (minúscula al inicio)
-            // Y las propiedades Públicas usan PascalCase (Mayúscula al inicio)
             ISBN = isbn;
             Nombre = nombre;
+            Autor = autor;
             Descripcion = descripcion;
             Precio = precio;
             Stock = stock;
+            Activo = activo;
         }
     }
 }
