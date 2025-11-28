@@ -15,6 +15,19 @@ namespace PuntoDeVenta
         public UC_Empleados()
         {
             InitializeComponent();
+            llenarGrid();
+        }
+        /// <summary>
+        /// Metodo para llenar el DataGridView con los empleados
+        /// </summary>
+        private void llenarGrid()
+        {
+            // Lógica para llenar el DataGridView con datos de empleados
+
+        }
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
