@@ -25,7 +25,7 @@ namespace PuntoDeVenta
             Empleado empleado = conexion.FindUser(username, password);
             if (empleado != null)
             {
-                if (empleado.isActivo())
+                if (empleado.Activo)
                 {
                     frmMenu menu = new frmMenu();
                     menu.Show();

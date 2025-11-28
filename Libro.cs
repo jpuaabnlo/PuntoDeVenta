@@ -8,39 +8,27 @@ namespace PuntoDeVenta
 {
     internal class Libro
     {
-        private string ISBN;
-        private string nombre;
-        private string descripcion;
-        private double precio;
-        private int stock;
+        public string ISBN { get; private set; }
+        public string Nombre { get; private set; }
+        public string Descripcion { get; private set; }
+        public double Precio { get; private set; }
+        public int Stock { get; private set; }
 
-        public Libro(string ISBN, string nombre, string descripcion, double precio, int stock)
+        /// <summary>
+        /// Inicializa una nueva instancia de un Libro.
+        /// </summary>
+        /// <param name="isbn">El identificador único (ISBN-13).</param>
+        /// <param name="nombre">Título completo de la obra.</param>
+        /// <param name="precio">Precio unitario en moneda local.</param>
+        public Libro(string isbn, string nombre, string descripcion, double precio, int stock)
         {
-            this.ISBN = ISBN;
-            this.nombre = nombre;
-            this.descripcion = descripcion;
-            this.precio = precio;
-            this.stock = stock;
-        }
-        public string getISBN()
-        {
-            return ISBN;
-        }
-        public string getNombre()
-        {
-            return nombre;
-        }
-        public string getDescripcion()
-        {
-            return descripcion;
-        }
-        public double getPrecio()
-        {
-            return precio;
-        }
-        public int getStock()
-        {
-            return stock;
+            // En C# las variables locales/parámetros usan camelCase (minúscula al inicio)
+            // Y las propiedades Públicas usan PascalCase (Mayúscula al inicio)
+            ISBN = isbn;
+            Nombre = nombre;
+            Descripcion = descripcion;
+            Precio = precio;
+            Stock = stock;
         }
     }
 }

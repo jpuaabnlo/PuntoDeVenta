@@ -113,6 +113,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UC_Empleados.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Empleados.Designer.cs">
+      <DependentUpon>UC_Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Productos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Productos.Designer.cs">
+      <DependentUpon>UC_Productos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Reportes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Reportes.Designer.cs">
+      <DependentUpon>UC_Reportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Ventas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Ventas.Designer.cs">
+      <DependentUpon>UC_Ventas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +153,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UC_Empleados.resx">
+      <DependentUpon>UC_Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Productos.resx">
+      <DependentUpon>UC_Productos.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

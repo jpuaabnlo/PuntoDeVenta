@@ -8,58 +8,32 @@ namespace PuntoDeVenta
 {
     internal class Empleado
     {
-        private int id;
-        private string nombre;
-        private string apellido;
-        private string username;
-        private string password;
-        private bool superUser;
-        private bool activo;
+        public int Id { get; private set; }
+        public string Nombre { get; private set; }
+        public string Apellido { get; private set; }
+        public string Username { get; private set; }
+        public string Password { get; private set; }
+        public bool SuperUser { get; private set; }
+        public bool Activo { get; private set; }
         public Empleado(int id, string nombre, string apellido, string username, string password, bool superUser, bool activo)
         {
-            this.id = id;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.username = username;
-            this.password = password;
-            this.superUser = superUser;
-            this.activo = activo;
+            this.Id = id;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Username = username;
+            this.Password = password;
+            this.SuperUser = superUser;
+            this.Activo = activo;
         }
 
         public Empleado(int id, string nombre, string apellido, string username, bool superUser, bool activo)
         {
-            this.id = id;
-            this.nombre = nombre;
-            this.apellido = apellido;
-            this.username = username;
-            this.superUser = superUser;
-            this.activo = activo;
-        }
-
-        public string GetNombre()
-        {
-            return nombre;
-        }
-        public string GetApellido()
-        {
-            return apellido;
-        }
-
-        public string GetUsername()
-        {
-            return username;
-        }
-        public string GetPassword()
-        {
-            return password;
-        }
-        public bool IsSuperUser()
-        {
-            return superUser;
-        }
-        public bool isActivo()
-        {
-            return activo;
+            this.Id = id;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Username = username;
+            this.SuperUser = superUser;
+            this.Activo = activo;
         }
     }
 }
