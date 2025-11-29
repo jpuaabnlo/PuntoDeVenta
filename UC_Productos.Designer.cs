@@ -30,6 +30,13 @@
         {
             this.btnCrear = new System.Windows.Forms.Button();
             this.dgvLibros = new System.Windows.Forms.DataGridView();
+            this.colISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.pnlTop = new System.Windows.Forms.Panel();
@@ -38,13 +45,6 @@
             this.lblBuscar = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.colISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             this.pnlTop.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -79,12 +79,62 @@
             this.dgvLibros.Location = new System.Drawing.Point(0, 50);
             this.dgvLibros.MultiSelect = false;
             this.dgvLibros.Name = "dgvLibros";
+            this.dgvLibros.ReadOnly = true;
             this.dgvLibros.RowHeadersWidth = 51;
             this.dgvLibros.RowTemplate.Height = 24;
             this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLibros.Size = new System.Drawing.Size(950, 420);
             this.dgvLibros.TabIndex = 1;
             this.dgvLibros.SelectionChanged += new System.EventHandler(this.dgvLibros_SelectionChanged);
+            // 
+            // colISBN
+            // 
+            this.colISBN.HeaderText = "ISBN";
+            this.colISBN.MinimumWidth = 6;
+            this.colISBN.Name = "colISBN";
+            this.colISBN.Width = 125;
+            // 
+            // colTitulo
+            // 
+            this.colTitulo.HeaderText = "Titulo";
+            this.colTitulo.MinimumWidth = 6;
+            this.colTitulo.Name = "colTitulo";
+            this.colTitulo.Width = 150;
+            // 
+            // colAutor
+            // 
+            this.colAutor.HeaderText = "Autor";
+            this.colAutor.MinimumWidth = 6;
+            this.colAutor.Name = "colAutor";
+            this.colAutor.Width = 150;
+            // 
+            // colPrecio
+            // 
+            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.MinimumWidth = 6;
+            this.colPrecio.Name = "colPrecio";
+            this.colPrecio.Width = 75;
+            // 
+            // colStock
+            // 
+            this.colStock.HeaderText = "Stock";
+            this.colStock.MinimumWidth = 6;
+            this.colStock.Name = "colStock";
+            this.colStock.Width = 75;
+            // 
+            // colDescripcion
+            // 
+            this.colDescripcion.HeaderText = "Descripcion";
+            this.colDescripcion.MinimumWidth = 6;
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.Width = 350;
+            // 
+            // colActivo
+            // 
+            this.colActivo.HeaderText = "Estatus";
+            this.colActivo.MinimumWidth = 6;
+            this.colActivo.Name = "colActivo";
+            this.colActivo.Width = 75;
             // 
             // btnActualizar
             // 
@@ -153,6 +203,7 @@
             // 
             this.lblBuscar.AutoSize = true;
             this.lblBuscar.Font = new System.Drawing.Font("Sylfaen", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.ForeColor = System.Drawing.Color.LightGray;
             this.lblBuscar.Location = new System.Drawing.Point(3, 13);
             this.lblBuscar.Name = "lblBuscar";
             this.lblBuscar.Size = new System.Drawing.Size(133, 23);
@@ -179,55 +230,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(950, 50);
             this.panel1.TabIndex = 12;
-            // 
-            // colISBN
-            // 
-            this.colISBN.HeaderText = "ISBN";
-            this.colISBN.MinimumWidth = 6;
-            this.colISBN.Name = "colISBN";
-            this.colISBN.Width = 125;
-            // 
-            // colTitulo
-            // 
-            this.colTitulo.HeaderText = "Titulo";
-            this.colTitulo.MinimumWidth = 6;
-            this.colTitulo.Name = "colTitulo";
-            this.colTitulo.Width = 150;
-            // 
-            // colAutor
-            // 
-            this.colAutor.HeaderText = "Autor";
-            this.colAutor.MinimumWidth = 6;
-            this.colAutor.Name = "colAutor";
-            this.colAutor.Width = 150;
-            // 
-            // colPrecio
-            // 
-            this.colPrecio.HeaderText = "Precio";
-            this.colPrecio.MinimumWidth = 6;
-            this.colPrecio.Name = "colPrecio";
-            this.colPrecio.Width = 75;
-            // 
-            // colStock
-            // 
-            this.colStock.HeaderText = "Stock";
-            this.colStock.MinimumWidth = 6;
-            this.colStock.Name = "colStock";
-            this.colStock.Width = 75;
-            // 
-            // colDescripcion
-            // 
-            this.colDescripcion.HeaderText = "Descripcion";
-            this.colDescripcion.MinimumWidth = 6;
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.Width = 350;
-            // 
-            // colActivo
-            // 
-            this.colActivo.HeaderText = "Estatus";
-            this.colActivo.MinimumWidth = 6;
-            this.colActivo.Name = "colActivo";
-            this.colActivo.Width = 75;
             // 
             // UC_Productos
             // 
