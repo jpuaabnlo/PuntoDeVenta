@@ -121,13 +121,49 @@
   <data name="FondoLogin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FondoLogin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgVenta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgVenta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgLibro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgLibro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgEmpleado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgEmpleado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgLogout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgLogout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgReporteSel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgReporteSel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FondoLogin11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FondoLogin1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgEmpleadoSel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgEmpleadoSel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FondoMenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FondoMenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FondoLogin1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FondoLogin1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgVentaSel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgVentaSel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgReporte" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgReporte.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgLibroSel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgLibroSel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FondoMenuDef" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FondoMenuDef.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

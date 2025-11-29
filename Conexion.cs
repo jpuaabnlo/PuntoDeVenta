@@ -115,11 +115,12 @@ namespace PuntoDeVenta
         {
             try
             {
+                Console.WriteLine(keyword);
                 List<Libro> libros = new List<Libro>();
-                using (MySqlConnection connection = new MySqlConnection())
+                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM LIBROS WHERE ISBN LIKE @keyword OR TITULO LIKE @keyword OR AUTOR LIKE @keyboard";
+                    string query = "SELECT * FROM LIBROS WHERE ISBN LIKE @keyword OR NOMBRE LIKE @keyword OR AUTOR LIKE @keyword OR DESCRIPCION LIKE @keyword";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@keyword", "%" + keyword + "%");

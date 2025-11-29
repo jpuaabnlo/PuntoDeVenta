@@ -16,7 +16,12 @@ namespace PuntoDeVenta
         public UC_Productos()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
             DatosIniciales();
+            btnActualizar.Visible = Sesion.EmpleadoActual.SuperUser;
+            btnBorrar.Visible = Sesion.EmpleadoActual.SuperUser;
+            btnActualizar.Enabled = false;
+            btnBorrar.Enabled = false;
         }
 
         private void DatosIniciales()
@@ -24,6 +29,7 @@ namespace PuntoDeVenta
             Conexion conexion = new Conexion();
             List<Libro> libros = conexion.GetLibros();
             LlenarGrid(libros);
+            txtBuscar.Text = "";
         }
 
         private void LlenarGrid(List<Libro> libros)
@@ -81,8 +87,11 @@ namespace PuntoDeVenta
         {
             if (dgvLibros.SelectedRows.Count > 0)
             {
-                btnActualizar.Enabled = true;
-                btnBorrar.Enabled = dgvLibros.SelectedRows[0].Cells["colActivo"].Value?.ToString() == "Disponible";
+                if (Sesion.EmpleadoActual.SuperUser)
+                {
+                    btnActualizar.Enabled = true;
+                    btnBorrar.Enabled = dgvLibros.SelectedRows[0].Cells["colActivo"].Value?.ToString() == "Disponible";
+                }
             }
             else
             {
@@ -116,7 +125,9 @@ namespace PuntoDeVenta
             ))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
+                {
                     DatosIniciales();
+                }
             }
         }
 

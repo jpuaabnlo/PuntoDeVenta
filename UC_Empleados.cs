@@ -15,10 +15,16 @@ namespace PuntoDeVenta
         public UC_Empleados()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
             DatosIniciales();
+            btnActualizar.Visible = Sesion.EmpleadoActual.SuperUser;
+            btnBorrar.Visible = Sesion.EmpleadoActual.SuperUser;
             btnActualizar.Enabled = false;
             btnBorrar.Enabled = false;
         }
+
+        
+
         private void DatosIniciales()
         {
             Conexion conexion = new Conexion();
@@ -144,8 +150,11 @@ namespace PuntoDeVenta
         {
             if(dgvEmpleado.SelectedRows.Count > 0)
             {
-                btnActualizar.Enabled = true;
-                btnBorrar.Enabled = dgvEmpleado.SelectedRows[0].Cells["colStatus"].Value?.ToString() == "Contratado";
+                if (Sesion.EmpleadoActual.SuperUser)
+                {
+                    btnActualizar.Enabled = true;
+                    btnBorrar.Enabled = dgvEmpleado.SelectedRows[0].Cells["colStatus"].Value?.ToString() == "Contratado";
+                }
             }
             else
             {

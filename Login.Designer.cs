@@ -64,6 +64,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(274, 145);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(200, 22);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
@@ -104,7 +105,7 @@
             // pbLogo
             // 
             this.pbLogo.BackColor = System.Drawing.Color.Transparent;
-            this.pbLogo.Image = global::PuntoDeVenta.Properties.Resources.Logo;
+            this.pbLogo.Image = global::PuntoDeVenta.Properties.Resources.Logo1;
             this.pbLogo.Location = new System.Drawing.Point(12, 22);
             this.pbLogo.Name = "pbLogo";
             this.pbLogo.Size = new System.Drawing.Size(89, 79);
@@ -130,7 +131,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.BackgroundImage = global::PuntoDeVenta.Properties.Resources.FondoLogin1;
+            this.BackgroundImage = global::PuntoDeVenta.Properties.Resources.FondoLogin11;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(582, 253);
             this.Controls.Add(this.lblLogError);
@@ -141,6 +142,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnLogIn);
+            this.DoubleBuffered = true;
             this.Name = "Login";
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
