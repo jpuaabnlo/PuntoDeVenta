@@ -81,6 +81,7 @@ namespace PuntoDeVenta
             int idSeleccionado = Convert.ToInt32(dgvEmpleado.SelectedRows[0].Cells["colId"].Value);
             Conexion conexion = new Conexion();
             conexion.EliminarEmpleado(idSeleccionado);
+            DatosIniciales();
         }
 
 

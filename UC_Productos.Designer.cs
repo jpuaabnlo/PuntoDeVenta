@@ -33,17 +33,17 @@
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnBorrar = new System.Windows.Forms.Button();
             this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblErrorLibro = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.lblBuscar = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblErrorLibro = new System.Windows.Forms.Label();
             this.colISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripción = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             this.pnlTop.SuspendLayout();
@@ -60,6 +60,7 @@
             this.btnCrear.TabIndex = 0;
             this.btnCrear.Text = "Nuevo Libro";
             this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
             // dgvLibros
             // 
@@ -72,7 +73,7 @@
             this.colAutor,
             this.colPrecio,
             this.colStock,
-            this.Descripción,
+            this.colDescripcion,
             this.colActivo});
             this.dgvLibros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLibros.Location = new System.Drawing.Point(0, 50);
@@ -83,6 +84,7 @@
             this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLibros.Size = new System.Drawing.Size(950, 420);
             this.dgvLibros.TabIndex = 1;
+            this.dgvLibros.SelectionChanged += new System.EventHandler(this.dgvLibros_SelectionChanged);
             // 
             // btnActualizar
             // 
@@ -95,6 +97,7 @@
             this.btnActualizar.TabIndex = 2;
             this.btnActualizar.Text = "Actualizar Información";
             this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnBorrar
             // 
@@ -107,6 +110,7 @@
             this.btnBorrar.TabIndex = 3;
             this.btnBorrar.Text = "Eliminar";
             this.btnBorrar.UseVisualStyleBackColor = false;
+            this.btnBorrar.Click += new System.EventHandler(this.btnBorrar_Click);
             // 
             // pnlTop
             // 
@@ -120,6 +124,18 @@
             this.pnlTop.Name = "pnlTop";
             this.pnlTop.Size = new System.Drawing.Size(950, 50);
             this.pnlTop.TabIndex = 11;
+            // 
+            // lblErrorLibro
+            // 
+            this.lblErrorLibro.AutoSize = true;
+            this.lblErrorLibro.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorLibro.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblErrorLibro.Location = new System.Drawing.Point(477, 14);
+            this.lblErrorLibro.Name = "lblErrorLibro";
+            this.lblErrorLibro.Size = new System.Drawing.Size(164, 22);
+            this.lblErrorLibro.TabIndex = 10;
+            this.lblErrorLibro.Text = "Libro no encontrado.";
+            this.lblErrorLibro.Visible = false;
             // 
             // btnBuscar
             // 
@@ -164,18 +180,6 @@
             this.panel1.Size = new System.Drawing.Size(950, 50);
             this.panel1.TabIndex = 12;
             // 
-            // lblErrorLibro
-            // 
-            this.lblErrorLibro.AutoSize = true;
-            this.lblErrorLibro.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorLibro.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblErrorLibro.Location = new System.Drawing.Point(477, 14);
-            this.lblErrorLibro.Name = "lblErrorLibro";
-            this.lblErrorLibro.Size = new System.Drawing.Size(164, 22);
-            this.lblErrorLibro.TabIndex = 10;
-            this.lblErrorLibro.Text = "Libro no encontrado.";
-            this.lblErrorLibro.Visible = false;
-            // 
             // colISBN
             // 
             this.colISBN.HeaderText = "ISBN";
@@ -211,12 +215,12 @@
             this.colStock.Name = "colStock";
             this.colStock.Width = 75;
             // 
-            // Descripción
+            // colDescripcion
             // 
-            this.Descripción.HeaderText = "colDescripcion";
-            this.Descripción.MinimumWidth = 6;
-            this.Descripción.Name = "Descripción";
-            this.Descripción.Width = 350;
+            this.colDescripcion.HeaderText = "Descripcion";
+            this.colDescripcion.MinimumWidth = 6;
+            this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.Width = 350;
             // 
             // colActivo
             // 
@@ -259,7 +263,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAutor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripción;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn colActivo;
     }
 }
