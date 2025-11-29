@@ -54,15 +54,49 @@ namespace PuntoDeVenta
             btnGuardar.BackColor = Color.GreenYellow;
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+        private bool Verificar()
         {
+            string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
+            if (username == "")
+            {
+                txtUsername.BackColor = Color.Red;
+                lblError.Text = "El campo Usuario es obligatorio.";
+                lblError.Visible = true;
+                return false;
+            }
+            if(txtNombre.Text.Trim() == "")
+            {
+                txtNombre.BackColor = Color.Red;
+                lblError.Text = "El campo Nombre es obligatorio.";
+                lblError.Visible = true;
+                return false;
+            }
+            if (txtApellidos.Text.Trim() == "")
+            {
+                txtApellidos.BackColor = Color.Red;
+                lblError.Text = "El campo Apellidos es obligatorio.";
+                lblError.Visible = true;
+                return false;
+            }
             if (password != confirmPassword)
             {
-                lblErrorPassword.Visible = true;
-                return;
+                txtPassword.BackColor = Color.Red;
+                txtConfirmPassword.BackColor = Color.Red;
+                lblError.Text = "Las contraseñas no coinciden.";
+                lblError.Visible = true;
+                return false;
             }
+            return true;
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            if (!Verificar()) 
+                return;
+            string password = txtPassword.Text.Trim();
+            string confirmPassword = txtConfirmPassword.Text.Trim();
             if(idEmpleado.HasValue)
             {
                 // Lógica para actualizar empleado existente
@@ -89,7 +123,8 @@ namespace PuntoDeVenta
                 Conexion conexion = new Conexion();
                 if (conexion.VerificarUsername(username))
                 {
-                    lblErrorUsername.Visible = true;
+                    txtUsername.BackColor = Color.Red;
+                    lblError.Visible = true;
                     return;
                 }
                 conexion.CrearEmpleado(
@@ -113,6 +148,14 @@ namespace PuntoDeVenta
 
         private void txtNombre_KeyUp(object sender, KeyEventArgs e)
         {
+            if (lblError.Visible == true)
+            {
+                lblError.Visible = false;
+                if (txtNombre.BackColor == Color.Red)
+                {
+                    txtNombre.BackColor = SystemColors.Window;
+                }
+            }
             if (e.KeyCode == Keys.Enter)
             {
                 txtApellidos.Focus();
@@ -120,6 +163,14 @@ namespace PuntoDeVenta
         }
         private void txtApellidos_KeyUp(object sender, KeyEventArgs e)
         {
+            if (lblError.Visible == true)
+            {
+                lblError.Visible = false;
+                if (txtApellidos.BackColor == Color.Red)
+                {
+                    txtApellidos.BackColor = SystemColors.Window;
+                }
+            }
             if (e.KeyCode == Keys.Enter)
             {
                 txtUsername.Focus();
@@ -128,9 +179,13 @@ namespace PuntoDeVenta
 
         private void txtUsername_KeyUp(object sender, KeyEventArgs e)
         {
-            if (lblErrorUsername.Visible == true)
+            if (lblError.Visible == true)
             {
-                lblErrorUsername.Visible = false;
+                lblError.Visible = false;
+                if (txtUsername.BackColor == Color.Red)
+                {
+                    txtUsername.BackColor = SystemColors.Window;
+                }
             }
             if (e.KeyCode == Keys.Enter)
             {
@@ -140,9 +195,13 @@ namespace PuntoDeVenta
 
         private void txtPassword_KeyUp(object sender, KeyEventArgs e)
         {
-            if (lblErrorPassword.Visible == true)
+            if (lblError.Visible == true)
             {
-                lblErrorPassword.Visible = false;
+                lblError.Visible = false;
+                if (txtPassword.BackColor == Color.Red)
+                {
+                    txtPassword.BackColor = SystemColors.Window;
+                }
             }
             if (e.KeyCode == Keys.Enter)
             {
@@ -152,9 +211,13 @@ namespace PuntoDeVenta
 
         private void txtConfirmPassword_KeyUp(object sender, KeyEventArgs e)
         {
-            if (lblErrorPassword.Visible == true)
+            if (lblError.Visible == true)
             {
-                lblErrorPassword.Visible = false;
+                lblError.Visible = false;
+                if (txtConfirmPassword.BackColor == Color.Red)
+                {
+                    txtConfirmPassword.BackColor = SystemColors.Window;
+                }
             }
             if (e.KeyCode == Keys.Enter)
             {

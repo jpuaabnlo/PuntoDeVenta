@@ -87,7 +87,7 @@ namespace PuntoDeVenta
                                 libros.Add(
                                     new Libro(
                                         Convert.ToString(reader["ISBN"]),
-                                        reader["TITULO"].ToString(),
+                                        reader["NOMBRE"].ToString(),
                                         reader["AUTOR"].ToString(),
                                         reader["DESCRIPCION"].ToString(),
                                         Convert.ToDecimal(reader["PRECIO"]),
@@ -130,7 +130,7 @@ namespace PuntoDeVenta
                                 libros.Add(
                                     new Libro(
                                         Convert.ToString(reader["ISBN"]),
-                                        reader["TITULO"].ToString(),
+                                        reader["NOMBRE"].ToString(),
                                         reader["AUTOR"].ToString(),
                                         reader["DESCRIPCION"].ToString(),
                                         Convert.ToDecimal(reader["PRECIO"]),
@@ -143,6 +143,132 @@ namespace PuntoDeVenta
                     }
                 }
                 return libros;
+            }
+            catch (MySqlException mySqlEx)
+            {
+                throw new Exception("Error de MySQL al conectar con la base de datos: " + mySqlEx.Message, mySqlEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
+            }
+        }
+
+        public bool ExisteISBN(string isbn)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                {
+                    connection.Open();
+                    string query = "SELECT 1 FROM LIBROS WHERE ISBN = @isbn LIMIT 1";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@isbn", isbn);
+                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        return count > 0;
+                    }
+                }
+            }
+            catch (MySqlException mySqlEx)
+            {
+                throw new Exception("Error de MySQL al conectar con la base de datos: " + mySqlEx.Message, mySqlEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
+            }
+        }
+
+        public bool CrearLibro(Libro nuevoLibro)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                {
+                    connection.Open();
+                    string query = "SP_CREAR_LIBRO";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("P_ISBN", nuevoLibro.ISBN);
+                        command.Parameters.AddWithValue("P_NOMBRE", nuevoLibro.Nombre);
+                        command.Parameters.AddWithValue("P_AUTOR", nuevoLibro.Autor);
+                        command.Parameters.AddWithValue("P_DESCRIPCION", nuevoLibro.Descripcion);
+                        command.Parameters.AddWithValue("P_PRECIO", nuevoLibro.Precio);
+                        command.Parameters.AddWithValue("P_STOCK", nuevoLibro.Stock);
+                        int filasAfectadas = command.ExecuteNonQuery();
+                        if (filasAfectadas > 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (MySqlException mySqlEx)
+            {
+                throw new Exception("Error de MySQL al conectar con la base de datos: " + mySqlEx.Message, mySqlEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="actualizarLibro"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public bool ActualizarLibro(Libro actualizarLibro)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                {
+                    connection.Open();
+                    string query = "SP_ACTUALIZAR_LIBRO";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("P_ISBN", actualizarLibro.ISBN);
+                        command.Parameters.AddWithValue("P_NOMBRE", actualizarLibro.Nombre);
+                        command.Parameters.AddWithValue("P_AUTOR", actualizarLibro.Autor);
+                        command.Parameters.AddWithValue("P_DESCRIPCION", actualizarLibro.Descripcion);
+                        command.Parameters.AddWithValue("P_PRECIO", actualizarLibro.Precio);
+                        command.Parameters.AddWithValue("P_STOCK", actualizarLibro.Stock);
+                        command.Parameters.AddWithValue("P_ACTIVO", actualizarLibro.Activo);
+                        int filasAfectadas = command.ExecuteNonQuery();
+                        return filasAfectadas > 0;
+                    }
+                }
+            }
+            catch (MySqlException mySqlEx)
+            {
+                throw new Exception("Error de MySQL al conectar con la base de datos: " + mySqlEx.Message, mySqlEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
+            }
+        }
+
+        public void EliminarLibro(string isbn)
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                {
+                    connection.Open();
+                    string query = "UPDATE LIBROS SET ACTIVO = FALSE WHERE ISBN = @isbn";
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@isbn", isbn);
+                        command.ExecuteNonQuery();
+                    }
+                }
             }
             catch (MySqlException mySqlEx)
             {

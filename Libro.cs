@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PuntoDeVenta
 {
-    internal class Libro
+    public class Libro
     {
         public string ISBN { get; private set; }
         public string Nombre { get; private set; }

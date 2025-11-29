@@ -39,10 +39,9 @@
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.lblErrorPassword = new System.Windows.Forms.Label();
-            this.lblErrorUsername = new System.Windows.Forms.Label();
             this.chkSuperUser = new System.Windows.Forms.CheckBox();
             this.chkStatus = new System.Windows.Forms.CheckBox();
+            this.lblError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblNombre
@@ -158,37 +157,13 @@
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             this.btnGuardar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnGuardar_KeyUp);
             // 
-            // lblErrorPassword
-            // 
-            this.lblErrorPassword.AutoSize = true;
-            this.lblErrorPassword.Font = new System.Drawing.Font("Sylfaen", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorPassword.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblErrorPassword.Location = new System.Drawing.Point(72, 368);
-            this.lblErrorPassword.Name = "lblErrorPassword";
-            this.lblErrorPassword.Size = new System.Drawing.Size(198, 19);
-            this.lblErrorPassword.TabIndex = 13;
-            this.lblErrorPassword.Text = "Las contraseñas no son iguales.";
-            this.lblErrorPassword.Visible = false;
-            // 
-            // lblErrorUsername
-            // 
-            this.lblErrorUsername.AutoSize = true;
-            this.lblErrorUsername.Font = new System.Drawing.Font("Sylfaen", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorUsername.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblErrorUsername.Location = new System.Drawing.Point(108, 217);
-            this.lblErrorUsername.Name = "lblErrorUsername";
-            this.lblErrorUsername.Size = new System.Drawing.Size(144, 19);
-            this.lblErrorUsername.TabIndex = 14;
-            this.lblErrorUsername.Text = "El username ya existe.";
-            this.lblErrorUsername.Visible = false;
-            // 
             // chkSuperUser
             // 
             this.chkSuperUser.AutoSize = true;
             this.chkSuperUser.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.chkSuperUser.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSuperUser.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkSuperUser.Location = new System.Drawing.Point(96, 401);
+            this.chkSuperUser.Location = new System.Drawing.Point(96, 370);
             this.chkSuperUser.Name = "chkSuperUser";
             this.chkSuperUser.Size = new System.Drawing.Size(156, 43);
             this.chkSuperUser.TabIndex = 16;
@@ -201,13 +176,25 @@
             this.chkStatus.CheckAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.chkStatus.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkStatus.Location = new System.Drawing.Point(123, 450);
+            this.chkStatus.Location = new System.Drawing.Point(123, 419);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Size = new System.Drawing.Size(101, 43);
             this.chkStatus.TabIndex = 17;
             this.chkStatus.Text = "Contratado:";
             this.chkStatus.UseVisualStyleBackColor = true;
             this.chkStatus.Visible = false;
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.Font = new System.Drawing.Font("Sylfaen", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblError.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblError.Location = new System.Drawing.Point(72, 480);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(198, 19);
+            this.lblError.TabIndex = 13;
+            this.lblError.Text = "Las contraseñas no son iguales.";
+            this.lblError.Visible = false;
             // 
             // frmDetalleEmpleado
             // 
@@ -217,8 +204,7 @@
             this.ClientSize = new System.Drawing.Size(332, 554);
             this.Controls.Add(this.chkStatus);
             this.Controls.Add(this.chkSuperUser);
-            this.Controls.Add(this.lblErrorUsername);
-            this.Controls.Add(this.lblErrorPassword);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.lblConfirmPassword);
@@ -250,9 +236,8 @@
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Label lblErrorPassword;
-        private System.Windows.Forms.Label lblErrorUsername;
         private System.Windows.Forms.CheckBox chkSuperUser;
         private System.Windows.Forms.CheckBox chkStatus;
+        private System.Windows.Forms.Label lblError;
     }
 }

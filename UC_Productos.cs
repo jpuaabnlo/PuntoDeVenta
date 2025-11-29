@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,6 +36,7 @@ namespace PuntoDeVenta
                 dgvLibros.Rows.Add(
                     libro.ISBN,
                     libro.Nombre,
+                    libro.Autor,
                     libro.Precio.ToString("C2"),
                     libro.Stock,
                     libro.Descripcion,
@@ -73,6 +75,57 @@ namespace PuntoDeVenta
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             txtBuscar_KeyUp(sender, new KeyEventArgs(Keys.Enter));
+        }
+
+        private void dgvLibros_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvLibros.SelectedRows.Count > 0)
+            {
+                btnActualizar.Enabled = true;
+                btnBorrar.Enabled = dgvLibros.SelectedRows[0].Cells["colActivo"].Value?.ToString() == "Disponible";
+            }
+            else
+            {
+                btnActualizar.Enabled = false;
+                btnBorrar.Enabled = false;
+            }
+        }
+
+        private void btnCrear_Click(object sender, EventArgs e)
+        {
+            using (frmDetalleLibro frm = new frmDetalleLibro())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                    DatosIniciales();
+            }
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            using (frmDetalleLibro frm = new frmDetalleLibro(
+                new Libro
+                (
+                    dgvLibros.SelectedRows[0].Cells["colISBN"].Value.ToString(),
+                    dgvLibros.SelectedRows[0].Cells["colTitulo"].Value.ToString(),
+                    dgvLibros.SelectedRows[0].Cells["colAutor"].Value.ToString(),
+                    dgvLibros.SelectedRows[0].Cells["colDescripcion"].Value.ToString(),
+                    decimal.Parse(dgvLibros.SelectedRows[0].Cells["colPrecio"].Value.ToString(), NumberStyles.Currency),
+                    Convert.ToInt32(dgvLibros.SelectedRows[0].Cells["colStock"].Value),
+                    dgvLibros.SelectedRows[0].Cells["colActivo"].Value.ToString() == "Disponible"
+                )
+            ))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                    DatosIniciales();
+            }
+        }
+
+        private void btnBorrar_Click(object sender, EventArgs e)
+        {
+            string isbn = dgvLibros.SelectedRows[0].Cells["colISBN"].Value.ToString();
+            Conexion conexion = new Conexion();
+            conexion.EliminarLibro(isbn);
+            DatosIniciales();
         }
     }
 }
