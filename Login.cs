@@ -27,8 +27,9 @@ namespace PuntoDeVenta
             {
                 if (empleado.Activo)
                 {
-                    frmMenu menu = new frmMenu();
-                    menu.Show();
+                    Sesion.EmpleadoActual = empleado;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {

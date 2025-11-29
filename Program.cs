@@ -16,7 +16,15 @@ namespace PuntoDeVenta
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Login login = new Login();
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmMenu());
+            }
+            else {
+                Application.Exit();
+            }
+
         }
     }
 }
