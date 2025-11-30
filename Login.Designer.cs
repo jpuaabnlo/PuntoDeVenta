@@ -43,9 +43,10 @@
             // 
             this.btnLogIn.BackColor = System.Drawing.Color.CornflowerBlue;
             this.btnLogIn.Font = new System.Drawing.Font("Sylfaen", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogIn.Location = new System.Drawing.Point(446, 203);
+            this.btnLogIn.Location = new System.Drawing.Point(334, 165);
+            this.btnLogIn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLogIn.Name = "btnLogIn";
-            this.btnLogIn.Size = new System.Drawing.Size(100, 38);
+            this.btnLogIn.Size = new System.Drawing.Size(75, 31);
             this.btnLogIn.TabIndex = 0;
             this.btnLogIn.Text = "Log In";
             this.btnLogIn.UseVisualStyleBackColor = false;
@@ -54,18 +55,21 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(274, 104);
+            this.txtUsername.Location = new System.Drawing.Point(206, 84);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(200, 22);
+            this.txtUsername.Size = new System.Drawing.Size(151, 20);
             this.txtUsername.TabIndex = 2;
+            this.txtUsername.TextChanged += new System.EventHandler(this.txtUsername_TextChanged);
             this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyUp);
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(274, 145);
+            this.txtPassword.Location = new System.Drawing.Point(206, 118);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(200, 22);
+            this.txtPassword.Size = new System.Drawing.Size(151, 20);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
@@ -74,9 +78,10 @@
             this.lblAppName.AutoSize = true;
             this.lblAppName.BackColor = System.Drawing.Color.Transparent;
             this.lblAppName.Font = new System.Drawing.Font("Sylfaen", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAppName.Location = new System.Drawing.Point(107, 22);
+            this.lblAppName.Location = new System.Drawing.Point(80, 18);
+            this.lblAppName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAppName.Name = "lblAppName";
-            this.lblAppName.Size = new System.Drawing.Size(439, 79);
+            this.lblAppName.Size = new System.Drawing.Size(349, 62);
             this.lblAppName.TabIndex = 4;
             this.lblAppName.Text = "Librería OnLine";
             // 
@@ -85,9 +90,10 @@
             this.lblUsername.AutoSize = true;
             this.lblUsername.BackColor = System.Drawing.Color.Transparent;
             this.lblUsername.Font = new System.Drawing.Font("Sylfaen", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(117, 101);
+            this.lblUsername.Location = new System.Drawing.Point(88, 82);
+            this.lblUsername.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(95, 29);
+            this.lblUsername.Size = new System.Drawing.Size(80, 25);
             this.lblUsername.TabIndex = 5;
             this.lblUsername.Text = "Usuario:";
             // 
@@ -96,9 +102,10 @@
             this.lblPassword.AutoSize = true;
             this.lblPassword.BackColor = System.Drawing.Color.Transparent;
             this.lblPassword.Font = new System.Drawing.Font("Sylfaen", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(117, 145);
+            this.lblPassword.Location = new System.Drawing.Point(88, 118);
+            this.lblPassword.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(130, 29);
+            this.lblPassword.Size = new System.Drawing.Size(106, 25);
             this.lblPassword.TabIndex = 6;
             this.lblPassword.Text = "Contraseña:";
             // 
@@ -106,9 +113,10 @@
             // 
             this.pbLogo.BackColor = System.Drawing.Color.Transparent;
             this.pbLogo.Image = global::PuntoDeVenta.Properties.Resources.Logo1;
-            this.pbLogo.Location = new System.Drawing.Point(12, 22);
+            this.pbLogo.Location = new System.Drawing.Point(9, 18);
+            this.pbLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(89, 79);
+            this.pbLogo.Size = new System.Drawing.Size(67, 64);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLogo.TabIndex = 1;
             this.pbLogo.TabStop = false;
@@ -119,21 +127,22 @@
             this.lblLogError.BackColor = System.Drawing.Color.Transparent;
             this.lblLogError.Font = new System.Drawing.Font("Sylfaen", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogError.ForeColor = System.Drawing.Color.IndianRed;
-            this.lblLogError.Location = new System.Drawing.Point(118, 174);
+            this.lblLogError.Location = new System.Drawing.Point(88, 141);
+            this.lblLogError.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLogError.Name = "lblLogError";
-            this.lblLogError.Size = new System.Drawing.Size(322, 23);
+            this.lblLogError.Size = new System.Drawing.Size(269, 19);
             this.lblLogError.TabIndex = 7;
             this.lblLogError.Text = "Usuario no encontrado. Datos incorrectos.";
             this.lblLogError.Visible = false;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImage = global::PuntoDeVenta.Properties.Resources.FondoLogin11;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(582, 253);
+            this.ClientSize = new System.Drawing.Size(436, 206);
             this.Controls.Add(this.lblLogError);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.lblUsername);
@@ -143,6 +152,7 @@
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnLogIn);
             this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Login";
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();

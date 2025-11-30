@@ -75,5 +75,10 @@ namespace PuntoDeVenta
                 btnLogIn_Click(sender, e);
             }
         }
+
+        private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

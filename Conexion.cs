@@ -110,6 +110,11 @@ namespace PuntoDeVenta
                 throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
             }
         }
+        public static MySqlConnection GetConnection()
+        {
+            DatosDeConexion d = new DatosDeConexion();
+            return new MySqlConnection(d.Datos());
+        }
 
         public List<Libro> FindLibro(string keyword)
         {
