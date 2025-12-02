@@ -519,6 +519,43 @@ namespace PuntoDeVenta
                 throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
             }
         }
+        public static void AgregarDetalle(int idVenta, string isbn, int cantidad)
+        {
+            using (MySqlConnection cn = GetConnection())
+            {
+                cn.Open();
+                MySqlCommand cmd = new MySqlCommand("SP_DETALLE_VENTA", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@P_ID_VENTA", idVenta);
+                cmd.Parameters.AddWithValue("@P_ISBN", isbn);
+                cmd.Parameters.AddWithValue("@P_CANTIDAD", cantidad);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static int CrearVenta(int idEmpleado)
+        {
+            using (MySqlConnection cn = GetConnection())
+            {
+                cn.Open();
+                MySqlCommand cmd = new MySqlCommand("SP_CREAR_VENTA", cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@P_ID_EMPLEADO", idEmpleado);
+
+                MySqlParameter salida = new MySqlParameter("@P_ID_VENTA", MySqlDbType.Int32)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(salida);
+
+                cmd.ExecuteNonQuery();
+
+                return Convert.ToInt32(salida.Value);
+            }
+        }
 
         /// <summary>
         /// Determines whether the specified username exists in the database.
@@ -582,5 +619,37 @@ namespace PuntoDeVenta
                 throw new Exception("Error al generar el hash SHA-256: " + ex.Message);
             }
         }
+        public DataTable GenerarReporteVentas(DateTime inicio, DateTime fin)
+        {
+            DataTable tabla = new DataTable();
+
+            using (MySqlConnection cn = GetConnection())
+            {
+                string sql = @"
+            SELECT 
+                V.ID_VENTA,
+                V.FECHA,
+                V.TOTAL,
+                E.NOMBRE AS EMPLEADO
+            FROM VENTAS V
+            INNER JOIN EMPLEADOS E ON V.ID_EMPLEADO = E.ID_EMPLEADO
+            WHERE DATE(V.FECHA) BETWEEN @ini AND @fin
+            ORDER BY V.FECHA ASC";
+
+                using (MySqlCommand cmd = new MySqlCommand(sql, cn))
+                {
+                    cmd.Parameters.AddWithValue("@ini", inicio);
+                    cmd.Parameters.AddWithValue("@fin", fin);
+
+                    cn.Open();
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(tabla);
+                }
+            }
+
+            return tabla;
+        }
+
     }
+
 }
