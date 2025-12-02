@@ -110,23 +110,9 @@
     <Compile Include="frmDetalleLibro.Designer.cs">
       <DependentUpon>frmDetalleLibro.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmMenu.cs" />
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmReportes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmReportes.Designer.cs">
-      <DependentUpon>frmReportes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmVentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmVentas.Designer.cs">
-      <DependentUpon>frmVentas.cs</DependentUpon>
     </Compile>
     <Compile Include="Libro.cs" />
     <Compile Include="Login.cs">
@@ -171,12 +157,6 @@
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmReportes.resx">
-      <DependentUpon>frmReportes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmVentas.resx">
-      <DependentUpon>frmVentas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +175,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Productos.resx">
       <DependentUpon>UC_Productos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Reportes.resx">
+      <DependentUpon>UC_Reportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Ventas.resx">
+      <DependentUpon>UC_Ventas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

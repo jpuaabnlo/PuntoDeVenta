@@ -101,7 +101,7 @@ namespace PuntoDeVenta
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
-            PantallaActual("Ventas");
+             PantallaActual("Ventas");
             UC_Ventas pantalla = new UC_Ventas();
             Pantalla(pantalla);
         }
