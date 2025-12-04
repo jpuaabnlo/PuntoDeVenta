@@ -35,6 +35,7 @@ namespace PuntoDeVenta
 
         private void LlenarGridLibros(List<Libro> libros)
         {
+            // Se limpia el Data Grid View y se rellena con la información de libros
             dgvLibros.Rows.Clear();
             if (libros == null)
                 return;
@@ -65,27 +66,35 @@ namespace PuntoDeVenta
 
         private void txtBuscar_KeyUp(object sender, KeyEventArgs e)
         {
+
             if (lblErrorLibro.Visible)
             {
                 lblErrorLibro.Visible = false;
             }
+
             if (e.KeyCode == Keys.Enter)
             {
                 string keyword = txtBuscar.Text.Trim();
+
                 if (keyword == "")
                 {
                     dgvLibros.Rows.Clear();
                     DatosInicialesLibros();
                     return;
                 }
+
+                // Se busca y regresa el libro mediante la palabra clave dada
                 Conexion conexion = new Conexion();
                 List<Libro> libros = conexion.FindLibro(keyword);
+
                 if (libros == null || libros.Count == 0)
                 {
                     dgvLibros.Rows.Clear();
                     lblErrorLibro.Text = "No se encontraron libros con el término \"" + keyword + "\"";
                     lblErrorLibro.Visible = true;
                 }
+
+                // Se rellena con los libros encontrados
                 LlenarGridLibros(libros);
             }
         }
@@ -209,6 +218,7 @@ namespace PuntoDeVenta
 
             Conexion conexion = new Conexion();
             int idEmpleado = Sesion.EmpleadoActual.Id;
+            // Se verifica si se creo, caso contrario se notifica.
             if(conexion.CrearVentaCompleta(idEmpleado, libros))
             {
                 MessageBox.Show("Venta creada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -312,8 +322,9 @@ namespace PuntoDeVenta
             // Calcular el total del carrito
             foreach (DataGridViewRow row in dgvCarrito.Rows)
             {
-                total += Convert.ToDecimal(row.Cells["colCarritoImporte"].Value);
+                total += Convert.ToDecimal(row.Cells["colCarritoImporte"].Value.ToString().Replace("$",""));
             }
+
             lblCantidadTotal.Text = total.ToString("C2");
         }
     }

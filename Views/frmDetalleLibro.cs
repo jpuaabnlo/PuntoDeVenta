@@ -26,6 +26,13 @@ namespace PuntoDeVenta
             LlenarValores(libro);
         }
 
+        /// <summary>
+        /// Llena los campos del formulario con los valores del libro proporcionado.
+        /// </summary>
+        /// <remarks>Este método toma un objeto <see cref="Libro"/> y asigna sus propiedades
+        /// a los controles correspondientes en el formulario para mostrar los detalles del libro.</remarks>
+        /// <param name="libro">El objeto <see cref="Libro"/> cuyos detalles se van a mostrar.</param>
+        /// <returns>Nada.</returns>
         public void LlenarValores(Libro libro)
         {
             // Lógica para llenar los valores del libro en el formulario
@@ -41,6 +48,13 @@ namespace PuntoDeVenta
             btnGuardar.BackColor = Color.GreenYellow;
         }
 
+        /// <summary>
+        /// Verifica que los campos de entrada sean correctos y estén completos.
+        /// </summary>
+        /// <remarks>Este método comprueba si los campos obligatorios están rellenos y si
+        /// el formato de los campos numéricos es correcto. Si alguna validación falla,
+        /// resalta los campos relevantes y muestra un mensaje de error.</remarks>
+        /// <returns>True si todas las validaciones pasan; de lo contrario, false.</returns>
         public bool Revision()
         {
             lblError.Visible = false;
@@ -90,7 +104,10 @@ namespace PuntoDeVenta
             return true;
         }
 
-
+        /// <summary>
+        /// Maneja el evento de clic del botón "Guardar". Valida los campos de entrada
+        /// y ya sea actualiza un libro existente o crea uno nuevo según el texto del botón.
+        /// </summary>
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!Revision())

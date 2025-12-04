@@ -66,7 +66,7 @@ namespace PuntoDeVenta
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            // int idSeleccionado = Convert.ToInt32(dgvInventario.SelectedRows[0].Cells["id"].Value);
+            // Obtener los detalles del empleado seleccionado en el DataGridView
             Empleado empleado = new Empleado(
                     Convert.ToInt32(dgvEmpleado.SelectedRows[0].Cells["colId"].Value),
                     dgvEmpleado.SelectedRows[0].Cells["colNombre"].Value.ToString(),
@@ -84,6 +84,7 @@ namespace PuntoDeVenta
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            // Obtener el ID del empleado seleccionado en el DataGridView
             int idSeleccionado = Convert.ToInt32(dgvEmpleado.SelectedRows[0].Cells["colId"].Value);
             Conexion conexion = new Conexion();
             conexion.EliminarEmpleado(idSeleccionado);
@@ -127,14 +128,18 @@ namespace PuntoDeVenta
             if (e.KeyCode == Keys.Enter)
             {
                 string keyword = txtBuscar.Text.Trim();
+
                 if(keyword == "")
                 {
                     dgvEmpleado.Rows.Clear();
                     DatosIniciales();
                     return;
                 }
+
+                // Buscar empleados
                 Conexion conexion = new Conexion();
                 List<Empleado> empleados = conexion.BuscarEmpleados(keyword);
+
                 if(empleados == null || empleados.Count == 0)
                 {
                     dgvEmpleado.Rows.Clear();
@@ -142,12 +147,15 @@ namespace PuntoDeVenta
                     lblNoEncontrado.Visible = true;
                     return;
                 }
+
+                // Llenar el grid con los empleados encontrados
                 LlenarGrid(empleados);
             }
         }
 
         private void dgvEmpleado_SelectionChanged(object sender, EventArgs e)
         {
+            // Habilitar o deshabilitar botones según la selección del DataGridView
             if(dgvEmpleado.SelectedRows.Count > 0)
             {
                 if (Sesion.EmpleadoActual.SuperUser)

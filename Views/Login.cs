@@ -17,6 +17,10 @@ namespace PuntoDeVenta
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Maneja el evento de clic del botón "Iniciar sesión". Valida las credenciales
+        /// y establece la sesión si son correctas.
+        /// </summary>
         private void btnLogIn_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();

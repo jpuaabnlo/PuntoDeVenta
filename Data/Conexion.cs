@@ -17,16 +17,6 @@ namespace PuntoDeVenta
             return new MySqlConnection(datos.Datos());
         }
 
-        /// <summary>
-        /// Retrieves an employee record from the database that matches the specified username and password.
-        /// </summary>
-        /// <remarks>The method hashes the provided password using SHA-256 before comparing it with the
-        /// stored password in the database. The search is case-sensitive and limited to one matching record.</remarks>
-        /// <param name="username">The username of the employee to find. This value cannot be null or empty.</param>
-        /// <param name="password">The password of the employee to find. This value cannot be null or empty.</param>
-        /// <returns>An <see cref="Empleado"/> object representing the employee if a matching record is found; otherwise, <see
-        /// langword="null"/>.</returns>
-        /// <exception cref="Exception">Thrown if an error occurs while connecting to or querying the database.</exception>
         public Empleado FindUser(string username, string password)
         {
             try
