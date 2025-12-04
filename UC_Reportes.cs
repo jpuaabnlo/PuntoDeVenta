@@ -12,28 +12,45 @@ namespace PuntoDeVenta
             this.DoubleBuffered = true;
         }
 
-        private void btnGenerar_Click(object sender, EventArgs e)
+        private void btnGenerar_Click_1(object sender, EventArgs e)
         {
-            DateTime inicio = dtpInicio.Value.Date;
-            DateTime fin = dtpFin.Value.Date;
+            string tipoReporte = "";
+            DateTime ini = dtpInicio.Value;
+            DateTime fin = dtpFin.Value;
 
-            if (inicio > fin)
+            if (ini.Date > fin.Date)
             {
-                MessageBox.Show("La fecha inicial no puede ser mayor a la fecha final.",
-                    "Rango inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha fin.", "Error de fechas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(chkLibros.Checked)
+            {
+                tipoReporte = "LibrosVendidos";
+            }
+            else if (chkEmpleados.Checked)
+            {
+                tipoReporte = "EmpleadosRanking";
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un tipo de reporte.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             Conexion conexion = new Conexion();
-            DataTable tabla = conexion.GenerarReporteVentas(inicio, fin);
+            DataTable reporteVentas = conexion.GenerarReporteVentas(ini, fin, tipoReporte);
 
-            if (tabla.Rows.Count == 0)
+            if(reporteVentas.Rows.Count == 0)
             {
-                MessageBox.Show("No se encontraron ventas en ese periodo.",
-                    "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No se encontraron datos para el rango de fechas seleccionado.", "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
-
-            dgvReportes.DataSource = tabla;
+            else
+            {
+                dgvReporte.DataSource = reporteVentas;
+                dgvReporte.AutoResizeColumns();
+            }
         }
     }
 }

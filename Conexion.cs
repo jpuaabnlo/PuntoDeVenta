@@ -11,7 +11,11 @@ namespace PuntoDeVenta
 {
     internal class Conexion
     {
-        DatosDeConexion datos = new DatosDeConexion();
+        public static MySqlConnection GetConnection()
+        {
+            DatosDeConexion datos = new DatosDeConexion();
+            return new MySqlConnection(datos.Datos());
+        }
 
         /// <summary>
         /// Retrieves an employee record from the database that matches the specified username and password.
@@ -27,7 +31,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     password = Sha256Hash(password);
@@ -74,7 +78,7 @@ namespace PuntoDeVenta
             try
             {
                 List<Libro> libros = new List<Libro>();
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SELECT * FROM LIBROS WHERE ACTIVO = TRUE";
@@ -110,11 +114,7 @@ namespace PuntoDeVenta
                 throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
             }
         }
-        public static MySqlConnection GetConnection()
-        {
-            DatosDeConexion d = new DatosDeConexion();
-            return new MySqlConnection(d.Datos());
-        }
+
 
         public List<Libro> FindLibro(string keyword)
         {
@@ -122,7 +122,7 @@ namespace PuntoDeVenta
             {
                 Console.WriteLine(keyword);
                 List<Libro> libros = new List<Libro>();
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SELECT * FROM LIBROS WHERE ISBN LIKE @keyword OR NOMBRE LIKE @keyword OR AUTOR LIKE @keyword OR DESCRIPCION LIKE @keyword";
@@ -164,7 +164,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SELECT 1 FROM LIBROS WHERE ISBN = @isbn LIMIT 1";
@@ -190,7 +190,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SP_CREAR_LIBRO";
@@ -232,7 +232,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SP_ACTUALIZAR_LIBRO";
@@ -265,7 +265,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "UPDATE LIBROS SET ACTIVO = FALSE WHERE ISBN = @isbn";
@@ -300,7 +300,7 @@ namespace PuntoDeVenta
             try
             {
                 List<Empleado> empleados = new List<Empleado>();
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SELECT * FROM EMPLEADOS WHERE ACTIVO = TRUE";
@@ -352,7 +352,7 @@ namespace PuntoDeVenta
             try
             {
                 List<Empleado> empleados = new List<Empleado>();
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SELECT * FROM EMPLEADOS WHERE NOMBRE LIKE @keyword OR APELLIDOS LIKE @keyword OR USERNAME LIKE @keyword";
@@ -390,7 +390,7 @@ namespace PuntoDeVenta
                 throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
             }
         }
-        
+
         /// <summary>
         /// Creates a new employee record in the database.
         /// </summary>
@@ -407,7 +407,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SP_CREAR_EMPLEADO";
@@ -454,7 +454,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SP_ACTUALIZAR_EMPLEADO";
@@ -499,7 +499,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "UPDATE EMPLEADOS SET ACTIVO = FALSE WHERE ID_EMPLEADO = @idEmpleado";
@@ -519,12 +519,12 @@ namespace PuntoDeVenta
                 throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
             }
         }
-        public static void AgregarDetalle(int idVenta, string isbn, int cantidad)
+        public static void AgregarDetalle(int idVenta, string isbn, int cantidad, MySqlConnection cn, MySqlTransaction tran)
         {
-            using (MySqlConnection cn = GetConnection())
+            string query = "SP_DETALLE_VENTA";
+            using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
-                cn.Open();
-                MySqlCommand cmd = new MySqlCommand("SP_DETALLE_VENTA", cn);
+                cmd.Transaction = tran;
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@P_ID_VENTA", idVenta);
@@ -535,25 +535,62 @@ namespace PuntoDeVenta
             }
         }
 
-        public static int CrearVenta(int idEmpleado)
+        public static int CrearVenta(int idEmpleado, MySqlConnection cn, MySqlTransaction tran)
         {
-            using (MySqlConnection cn = GetConnection())
+            string query = "SP_CREAR_VENTA";
+            using (MySqlCommand cmd = new MySqlCommand(query, cn))
             {
-                cn.Open();
-                MySqlCommand cmd = new MySqlCommand("SP_CREAR_VENTA", cn);
+                cmd.Transaction = tran;
                 cmd.CommandType = CommandType.StoredProcedure;
-
                 cmd.Parameters.AddWithValue("@P_ID_EMPLEADO", idEmpleado);
-
-                MySqlParameter salida = new MySqlParameter("@P_ID_VENTA", MySqlDbType.Int32)
-                {
-                    Direction = ParameterDirection.Output
-                };
-                cmd.Parameters.Add(salida);
-
+                cmd.Parameters.Add("@P_ID_VENTA", MySqlDbType.Int32);
+                cmd.Parameters["@P_ID_VENTA"].Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
+                int idVenta = Convert.ToInt32(cmd.Parameters["@P_ID_VENTA"].Value);
+                return idVenta;
+            }
+        }
 
-                return Convert.ToInt32(salida.Value);
+        public bool CrearVentaCompleta(int idEmpleado, List<(string, int)> libros)
+        {
+            try
+            {
+                using (MySqlConnection connection = GetConnection())
+                {
+                    connection.Open();
+                    using (MySqlTransaction transaction = connection.BeginTransaction())
+                    {
+                        try
+                        {
+                            int idVenta = CrearVenta(idEmpleado, connection, transaction);
+                            foreach (var libro in libros)
+                            {
+                                AgregarDetalle(idVenta, libro.Item1, libro.Item2, connection, transaction);
+                            }
+                            transaction.Commit();
+                            return true;
+                        }
+                        catch (MySqlException mySqlEx)
+                        {
+                            transaction.Rollback();
+                            throw new Exception("Error de MySQL al generar la transacción: " + mySqlEx.Message, mySqlEx);
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw new Exception("Error al generar la transacción: " + ex.Message, ex);
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (MySqlException mySqlEx)
+            {
+                throw new Exception("Error de MySQL al conectar con la base de datos: " + mySqlEx.Message, mySqlEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
             }
         }
 
@@ -571,7 +608,7 @@ namespace PuntoDeVenta
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(datos.Datos()))
+                using (MySqlConnection connection = GetConnection())
                 {
                     connection.Open();
                     string query = "SELECT COUNT(*) FROM EMPLEADOS WHERE USERNAME = @username";
@@ -619,37 +656,72 @@ namespace PuntoDeVenta
                 throw new Exception("Error al generar el hash SHA-256: " + ex.Message);
             }
         }
-        public DataTable GenerarReporteVentas(DateTime inicio, DateTime fin)
+        public DataTable GenerarReporteVentas(DateTime inicio, DateTime fin, string tipo)
         {
             DataTable tabla = new DataTable();
-
-            using (MySqlConnection cn = GetConnection())
+            string query = "";
+            try
             {
-                string sql = @"
-            SELECT 
-                V.ID_VENTA,
-                V.FECHA,
-                V.TOTAL,
-                E.NOMBRE AS EMPLEADO
-            FROM VENTAS V
-            INNER JOIN EMPLEADOS E ON V.ID_EMPLEADO = E.ID_EMPLEADO
-            WHERE DATE(V.FECHA) BETWEEN @ini AND @fin
-            ORDER BY V.FECHA ASC";
-
-                using (MySqlCommand cmd = new MySqlCommand(sql, cn))
+                if (tipo == "LibrosVendidos")
                 {
-                    cmd.Parameters.AddWithValue("@ini", inicio);
-                    cmd.Parameters.AddWithValue("@fin", fin);
-
-                    cn.Open();
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    da.Fill(tabla);
+                    query = @"SELECT 
+                                L.ISBN, 
+                                L.NOMBRE AS Titulo, 
+                                L.AUTOR AS Autor,
+                                L.PRECIO AS Precio,
+                                SUM(DV.CANTIDAD) AS `Unidades vendidas`,
+                                SUM(DV.IMPORTE) AS Importe
+                            FROM DETALLE_VENTA DV
+                            INNER JOIN LIBROS L ON DV.ISBN = L.ISBN
+                            INNER JOIN VENTAS V ON DV.ID_VENTA = V.ID_VENTA
+                            WHERE V.FECHA BETWEEN @ini AND @fin
+                            GROUP BY L.ISBN, L.NOMBRE, L.AUTOR
+                            ORDER BY L.NOMBRE ASC;";
                 }
+                else if (tipo == "EmpleadosRanking")
+                {
+                    query = @"
+                            SELECT
+                                E.ID_EMPLEADO,
+                                E.NOMBRE, 
+                                E.APELLIDOS, 
+                                E.USERNAME,
+                                COUNT(V.ID_VENTA) AS `Cantidad ventas`,
+                                SUM(V.TOTAL) AS `Total vendido`
+                            FROM VENTAS V
+                            INNER JOIN EMPLEADOS E ON V.ID_EMPLEADO = E.ID_EMPLEADO
+                            WHERE V.FECHA BETWEEN @ini AND @fin
+                            GROUP BY E.ID_EMPLEADO, E.NOMBRE, E.APELLIDOS
+                            ORDER BY `Total vendido` DESC";
+                }
+                else
+                {
+                    throw new Exception("Tipo de reporte no válido.");
+                }
+                using (MySqlConnection cn = GetConnection())
+                {
+                    cn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand(query, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@ini", inicio);
+                        cmd.Parameters.AddWithValue("@fin", fin);
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(tabla);
+                        }
+                    }
+                }
+                return tabla;
             }
-
-            return tabla;
+            catch (MySqlException mySqlEx)
+            {
+                throw new Exception("Error de MySQL al conectar con la base de datos: " + mySqlEx.Message, mySqlEx);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al conectar con la base de datos: " + ex.Message, ex);
+            }
         }
-
     }
 
 }

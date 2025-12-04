@@ -28,252 +28,428 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblISBN = new System.Windows.Forms.Label();
-            this.txtISBN = new System.Windows.Forms.TextBox();
-            this.btnBuscarLibro = new System.Windows.Forms.Button();
-            this.lblNombre = new System.Windows.Forms.Label();
             this.lblNombreLibro = new System.Windows.Forms.Label();
-            this.lblPrecio = new System.Windows.Forms.Label();
             this.lblPrecioLibro = new System.Windows.Forms.Label();
-            this.lblStock = new System.Windows.Forms.Label();
             this.lblStockLibro = new System.Windows.Forms.Label();
-            this.lblCantidad = new System.Windows.Forms.Label();
-            this.nudCantidad = new System.Windows.Forms.NumericUpDown();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.dgvCarrito = new System.Windows.Forms.DataGridView();
-            this.lblTotalTexto = new System.Windows.Forms.Label();
+            this.ColCarritoISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCarritoNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCarritoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCarritoCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCarritoImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblErrorLibro = new System.Windows.Forms.Label();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.lblBuscar = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblCantidadTotal = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.btnGuardarVenta = new System.Windows.Forms.Button();
-            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).BeginInit();
+            this.btnCrear = new System.Windows.Forms.Button();
+            this.dgvLibros = new System.Windows.Forms.DataGridView();
+            this.colISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTitulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAutor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnCantidadMas = new System.Windows.Forms.Button();
+            this.btnCantidadMenos = new System.Windows.Forms.Button();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
+            this.pnlTop.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblISBN
-            // 
-            this.lblISBN.AutoSize = true;
-            this.lblISBN.Location = new System.Drawing.Point(63, 61);
-            this.lblISBN.Name = "lblISBN";
-            this.lblISBN.Size = new System.Drawing.Size(32, 13);
-            this.lblISBN.TabIndex = 0;
-            this.lblISBN.Text = "ISBN";
-            // 
-            // txtISBN
-            // 
-            this.txtISBN.Location = new System.Drawing.Point(155, 61);
-            this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(100, 20);
-            this.txtISBN.TabIndex = 1;
-            // 
-            // btnBuscarLibro
-            // 
-            this.btnBuscarLibro.Location = new System.Drawing.Point(296, 59);
-            this.btnBuscarLibro.Name = "btnBuscarLibro";
-            this.btnBuscarLibro.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscarLibro.TabIndex = 2;
-            this.btnBuscarLibro.Text = "Buscar libro";
-            this.btnBuscarLibro.UseVisualStyleBackColor = true;
-            // 
-            // lblNombre
-            // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(63, 100);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(47, 13);
-            this.lblNombre.TabIndex = 3;
-            this.lblNombre.Text = "Nombre:";
             // 
             // lblNombreLibro
             // 
             this.lblNombreLibro.AutoSize = true;
-            this.lblNombreLibro.Location = new System.Drawing.Point(152, 100);
+            this.lblNombreLibro.Location = new System.Drawing.Point(203, 123);
+            this.lblNombreLibro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombreLibro.Name = "lblNombreLibro";
-            this.lblNombreLibro.Size = new System.Drawing.Size(0, 13);
+            this.lblNombreLibro.Size = new System.Drawing.Size(0, 16);
             this.lblNombreLibro.TabIndex = 4;
-            // 
-            // lblPrecio
-            // 
-            this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(63, 131);
-            this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(40, 13);
-            this.lblPrecio.TabIndex = 5;
-            this.lblPrecio.Text = "Precio:";
             // 
             // lblPrecioLibro
             // 
             this.lblPrecioLibro.AutoSize = true;
-            this.lblPrecioLibro.Location = new System.Drawing.Point(155, 131);
+            this.lblPrecioLibro.Location = new System.Drawing.Point(207, 161);
+            this.lblPrecioLibro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecioLibro.Name = "lblPrecioLibro";
-            this.lblPrecioLibro.Size = new System.Drawing.Size(0, 13);
+            this.lblPrecioLibro.Size = new System.Drawing.Size(0, 16);
             this.lblPrecioLibro.TabIndex = 6;
-            // 
-            // lblStock
-            // 
-            this.lblStock.AutoSize = true;
-            this.lblStock.Location = new System.Drawing.Point(66, 164);
-            this.lblStock.Name = "lblStock";
-            this.lblStock.Size = new System.Drawing.Size(38, 13);
-            this.lblStock.TabIndex = 7;
-            this.lblStock.Text = "Stock:";
             // 
             // lblStockLibro
             // 
             this.lblStockLibro.AutoSize = true;
-            this.lblStockLibro.Location = new System.Drawing.Point(152, 164);
+            this.lblStockLibro.Location = new System.Drawing.Point(203, 202);
+            this.lblStockLibro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStockLibro.Name = "lblStockLibro";
-            this.lblStockLibro.Size = new System.Drawing.Size(0, 13);
+            this.lblStockLibro.Size = new System.Drawing.Size(0, 16);
             this.lblStockLibro.TabIndex = 8;
-            // 
-            // lblCantidad
-            // 
-            this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(69, 203);
-            this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(49, 13);
-            this.lblCantidad.TabIndex = 9;
-            this.lblCantidad.Text = "Cantidad";
-            // 
-            // nudCantidad
-            // 
-            this.nudCantidad.Location = new System.Drawing.Point(155, 203);
-            this.nudCantidad.Name = "nudCantidad";
-            this.nudCantidad.Size = new System.Drawing.Size(120, 20);
-            this.nudCantidad.TabIndex = 10;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(69, 247);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnAgregar.TabIndex = 11;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
             // 
             // dgvCarrito
             // 
+            this.dgvCarrito.AllowUserToAddRows = false;
+            this.dgvCarrito.AllowUserToDeleteRows = false;
             this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ISBN,
-            this.Nombre,
-            this.Precio,
-            this.Cantidad,
-            this.Importe});
-            this.dgvCarrito.Location = new System.Drawing.Point(15, 284);
+            this.ColCarritoISBN,
+            this.ColCarritoNombre,
+            this.ColCarritoPrecio,
+            this.ColCarritoCantidad,
+            this.ColCarritoImporte});
+            this.dgvCarrito.Location = new System.Drawing.Point(7, 202);
+            this.dgvCarrito.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvCarrito.MultiSelect = false;
             this.dgvCarrito.Name = "dgvCarrito";
-            this.dgvCarrito.Size = new System.Drawing.Size(537, 150);
+            this.dgvCarrito.ReadOnly = true;
+            this.dgvCarrito.RowHeadersWidth = 51;
+            this.dgvCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCarrito.Size = new System.Drawing.Size(939, 261);
             this.dgvCarrito.TabIndex = 12;
+            this.dgvCarrito.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvCarrito_RowsAdded);
+            this.dgvCarrito.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvCarrito_RowsRemoved);
+            this.dgvCarrito.SelectionChanged += new System.EventHandler(this.dgvCarrito_SelectionChanged);
             // 
-            // lblTotalTexto
+            // ColCarritoISBN
             // 
-            this.lblTotalTexto.AutoSize = true;
-            this.lblTotalTexto.Location = new System.Drawing.Point(575, 284);
-            this.lblTotalTexto.Name = "lblTotalTexto";
-            this.lblTotalTexto.Size = new System.Drawing.Size(34, 13);
-            this.lblTotalTexto.TabIndex = 13;
-            this.lblTotalTexto.Text = "Total:";
+            this.ColCarritoISBN.HeaderText = "ISBN";
+            this.ColCarritoISBN.MinimumWidth = 6;
+            this.ColCarritoISBN.Name = "ColCarritoISBN";
+            this.ColCarritoISBN.ReadOnly = true;
+            this.ColCarritoISBN.Width = 125;
+            // 
+            // ColCarritoNombre
+            // 
+            this.ColCarritoNombre.HeaderText = "Titulo";
+            this.ColCarritoNombre.MinimumWidth = 6;
+            this.ColCarritoNombre.Name = "ColCarritoNombre";
+            this.ColCarritoNombre.ReadOnly = true;
+            this.ColCarritoNombre.Width = 125;
+            // 
+            // ColCarritoPrecio
+            // 
+            this.ColCarritoPrecio.HeaderText = "Precio";
+            this.ColCarritoPrecio.MinimumWidth = 6;
+            this.ColCarritoPrecio.Name = "ColCarritoPrecio";
+            this.ColCarritoPrecio.ReadOnly = true;
+            this.ColCarritoPrecio.Width = 125;
+            // 
+            // ColCarritoCantidad
+            // 
+            this.ColCarritoCantidad.HeaderText = "Cantidad";
+            this.ColCarritoCantidad.MinimumWidth = 6;
+            this.ColCarritoCantidad.Name = "ColCarritoCantidad";
+            this.ColCarritoCantidad.ReadOnly = true;
+            this.ColCarritoCantidad.Width = 125;
+            // 
+            // ColCarritoImporte
+            // 
+            this.ColCarritoImporte.HeaderText = "Importe";
+            this.ColCarritoImporte.MinimumWidth = 6;
+            this.ColCarritoImporte.Name = "ColCarritoImporte";
+            this.ColCarritoImporte.ReadOnly = true;
+            this.ColCarritoImporte.Width = 125;
+            // 
+            // pnlTop
+            // 
+            this.pnlTop.BackColor = System.Drawing.Color.Transparent;
+            this.pnlTop.Controls.Add(this.lblErrorLibro);
+            this.pnlTop.Controls.Add(this.btnBuscar);
+            this.pnlTop.Controls.Add(this.lblBuscar);
+            this.pnlTop.Controls.Add(this.txtBuscar);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(950, 50);
+            this.pnlTop.TabIndex = 16;
+            // 
+            // lblErrorLibro
+            // 
+            this.lblErrorLibro.AutoSize = true;
+            this.lblErrorLibro.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorLibro.ForeColor = System.Drawing.Color.IndianRed;
+            this.lblErrorLibro.Location = new System.Drawing.Point(477, 14);
+            this.lblErrorLibro.Name = "lblErrorLibro";
+            this.lblErrorLibro.Size = new System.Drawing.Size(164, 22);
+            this.lblErrorLibro.TabIndex = 10;
+            this.lblErrorLibro.Text = "Libro no encontrado.";
+            this.lblErrorLibro.Visible = false;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.Honeydew;
+            this.btnBuscar.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(747, 5);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(200, 40);
+            this.btnBuscar.TabIndex = 9;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // lblBuscar
+            // 
+            this.lblBuscar.AutoSize = true;
+            this.lblBuscar.Font = new System.Drawing.Font("Sylfaen", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBuscar.ForeColor = System.Drawing.Color.LightGray;
+            this.lblBuscar.Location = new System.Drawing.Point(3, 13);
+            this.lblBuscar.Name = "lblBuscar";
+            this.lblBuscar.Size = new System.Drawing.Size(133, 23);
+            this.lblBuscar.TabIndex = 7;
+            this.lblBuscar.Text = "Buscar Libro(s): ";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(185, 11);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(275, 30);
+            this.txtBuscar.TabIndex = 8;
+            this.txtBuscar.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyUp);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.btnCancelar);
+            this.panel1.Controls.Add(this.lblCantidadTotal);
+            this.panel1.Controls.Add(this.lblTotal);
+            this.panel1.Controls.Add(this.btnCrear);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 470);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(950, 50);
+            this.panel1.TabIndex = 17;
+            // 
+            // lblCantidadTotal
+            // 
+            this.lblCantidadTotal.AutoSize = true;
+            this.lblCantidadTotal.Font = new System.Drawing.Font("Sylfaen", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidadTotal.Location = new System.Drawing.Point(619, 15);
+            this.lblCantidadTotal.Name = "lblCantidadTotal";
+            this.lblCantidadTotal.Size = new System.Drawing.Size(42, 23);
+            this.lblCantidadTotal.TabIndex = 6;
+            this.lblCantidadTotal.Text = "0.00";
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(581, 329);
+            this.lblTotal.Font = new System.Drawing.Font("Sylfaen", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.Location = new System.Drawing.Point(545, 15);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(28, 13);
-            this.lblTotal.TabIndex = 14;
-            this.lblTotal.Text = "0.00";
+            this.lblTotal.Size = new System.Drawing.Size(68, 23);
+            this.lblTotal.TabIndex = 5;
+            this.lblTotal.Text = "Total: $";
             // 
-            // btnGuardarVenta
+            // btnCrear
             // 
-            this.btnGuardarVenta.Location = new System.Drawing.Point(568, 367);
-            this.btnGuardarVenta.Name = "btnGuardarVenta";
-            this.btnGuardarVenta.Size = new System.Drawing.Size(103, 23);
-            this.btnGuardarVenta.TabIndex = 15;
-            this.btnGuardarVenta.Text = "Guardar Venta";
-            this.btnGuardarVenta.UseVisualStyleBackColor = true;
+            this.btnCrear.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.btnCrear.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCrear.Location = new System.Drawing.Point(747, 7);
+            this.btnCrear.Name = "btnCrear";
+            this.btnCrear.Size = new System.Drawing.Size(200, 40);
+            this.btnCrear.TabIndex = 4;
+            this.btnCrear.Text = "Generar Venta";
+            this.btnCrear.UseVisualStyleBackColor = false;
+            this.btnCrear.Click += new System.EventHandler(this.btnCrear_Click);
             // 
-            // ISBN
+            // dgvLibros
             // 
-            this.ISBN.HeaderText = "ISBN";
-            this.ISBN.Name = "ISBN";
-            this.ISBN.ReadOnly = true;
+            this.dgvLibros.AllowUserToAddRows = false;
+            this.dgvLibros.AllowUserToDeleteRows = false;
+            this.dgvLibros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLibros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colISBN,
+            this.colTitulo,
+            this.colAutor,
+            this.colPrecio,
+            this.colStock});
+            this.dgvLibros.Location = new System.Drawing.Point(8, 66);
+            this.dgvLibros.MultiSelect = false;
+            this.dgvLibros.Name = "dgvLibros";
+            this.dgvLibros.ReadOnly = true;
+            this.dgvLibros.RowHeadersWidth = 51;
+            this.dgvLibros.RowTemplate.Height = 24;
+            this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLibros.Size = new System.Drawing.Size(813, 129);
+            this.dgvLibros.TabIndex = 18;
+            this.dgvLibros.SelectionChanged += new System.EventHandler(this.dgvLibros_SelectionChanged);
             // 
-            // Nombre
+            // colISBN
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
+            this.colISBN.HeaderText = "ISBN";
+            this.colISBN.MinimumWidth = 6;
+            this.colISBN.Name = "colISBN";
+            this.colISBN.ReadOnly = true;
+            this.colISBN.Width = 125;
             // 
-            // Precio
+            // colTitulo
             // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
+            this.colTitulo.HeaderText = "Titulo";
+            this.colTitulo.MinimumWidth = 6;
+            this.colTitulo.Name = "colTitulo";
+            this.colTitulo.ReadOnly = true;
+            this.colTitulo.Width = 150;
             // 
-            // Cantidad
+            // colAutor
             // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
+            this.colAutor.HeaderText = "Autor";
+            this.colAutor.MinimumWidth = 6;
+            this.colAutor.Name = "colAutor";
+            this.colAutor.ReadOnly = true;
+            this.colAutor.Width = 150;
             // 
-            // Importe
+            // colPrecio
             // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
+            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.MinimumWidth = 6;
+            this.colPrecio.Name = "colPrecio";
+            this.colPrecio.ReadOnly = true;
+            this.colPrecio.Width = 75;
+            // 
+            // colStock
+            // 
+            this.colStock.HeaderText = "Stock";
+            this.colStock.MinimumWidth = 6;
+            this.colStock.Name = "colStock";
+            this.colStock.ReadOnly = true;
+            this.colStock.Width = 75;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnAgregar.Enabled = false;
+            this.btnAgregar.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(827, 148);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(120, 40);
+            this.btnAgregar.TabIndex = 19;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnCantidadMas
+            // 
+            this.btnCantidadMas.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCantidadMas.Location = new System.Drawing.Point(827, 65);
+            this.btnCantidadMas.Name = "btnCantidadMas";
+            this.btnCantidadMas.Size = new System.Drawing.Size(30, 30);
+            this.btnCantidadMas.TabIndex = 20;
+            this.btnCantidadMas.Text = "+";
+            this.btnCantidadMas.UseVisualStyleBackColor = true;
+            this.btnCantidadMas.Click += new System.EventHandler(this.btnCantidadMas_Click);
+            // 
+            // btnCantidadMenos
+            // 
+            this.btnCantidadMenos.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCantidadMenos.Location = new System.Drawing.Point(917, 66);
+            this.btnCantidadMenos.Name = "btnCantidadMenos";
+            this.btnCantidadMenos.Size = new System.Drawing.Size(30, 30);
+            this.btnCantidadMenos.TabIndex = 21;
+            this.btnCantidadMenos.Text = "-";
+            this.btnCantidadMenos.UseVisualStyleBackColor = true;
+            this.btnCantidadMenos.Click += new System.EventHandler(this.btnCantidadMenos_Click);
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Enabled = false;
+            this.txtCantidad.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidad.Location = new System.Drawing.Point(863, 66);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(48, 30);
+            this.txtCantidad.TabIndex = 22;
+            this.txtCantidad.Text = "1";
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnEliminar.Enabled = false;
+            this.btnEliminar.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(827, 102);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(120, 40);
+            this.btnEliminar.TabIndex = 23;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.IndianRed;
+            this.btnCancelar.Enabled = false;
+            this.btnCancelar.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(8, 7);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(200, 40);
+            this.btnCancelar.TabIndex = 7;
+            this.btnCancelar.Text = "Cancelar Venta";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // UC_Ventas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnGuardarVenta);
-            this.Controls.Add(this.lblTotal);
-            this.Controls.Add(this.lblTotalTexto);
-            this.Controls.Add(this.dgvCarrito);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.btnCantidadMenos);
+            this.Controls.Add(this.btnCantidadMas);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.nudCantidad);
-            this.Controls.Add(this.lblCantidad);
+            this.Controls.Add(this.dgvLibros);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.dgvCarrito);
             this.Controls.Add(this.lblStockLibro);
-            this.Controls.Add(this.lblStock);
             this.Controls.Add(this.lblPrecioLibro);
-            this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblNombreLibro);
-            this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.btnBuscarLibro);
-            this.Controls.Add(this.txtISBN);
-            this.Controls.Add(this.lblISBN);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UC_Ventas";
-            this.Size = new System.Drawing.Size(729, 452);
-            ((System.ComponentModel.ISupportInitialize)(this.nudCantidad)).EndInit();
+            this.Size = new System.Drawing.Size(950, 520);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).EndInit();
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTop.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLibros)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblISBN;
-        private System.Windows.Forms.TextBox txtISBN;
-        private System.Windows.Forms.Button btnBuscarLibro;
-        private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblNombreLibro;
-        private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Label lblPrecioLibro;
-        private System.Windows.Forms.Label lblStock;
         private System.Windows.Forms.Label lblStockLibro;
-        private System.Windows.Forms.Label lblCantidad;
-        private System.Windows.Forms.NumericUpDown nudCantidad;
-        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dgvCarrito;
-        private System.Windows.Forms.Label lblTotalTexto;
+        private System.Windows.Forms.Panel pnlTop;
+        private System.Windows.Forms.Label lblErrorLibro;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Label lblBuscar;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnCrear;
+        private System.Windows.Forms.DataGridView dgvLibros;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnCantidadMas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colISBN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTitulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAutor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colStock;
+        private System.Windows.Forms.Button btnCantidadMenos;
+        private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.Button btnGuardarVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
+        private System.Windows.Forms.Label lblCantidadTotal;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCarritoISBN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCarritoNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCarritoPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCarritoCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColCarritoImporte;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

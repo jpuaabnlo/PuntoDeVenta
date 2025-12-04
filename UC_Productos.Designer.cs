@@ -85,6 +85,7 @@
             this.dgvLibros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLibros.Size = new System.Drawing.Size(950, 420);
             this.dgvLibros.TabIndex = 1;
+            this.dgvLibros.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLibros_CellContentDoubleClick);
             this.dgvLibros.SelectionChanged += new System.EventHandler(this.dgvLibros_SelectionChanged);
             // 
             // colISBN
@@ -92,6 +93,7 @@
             this.colISBN.HeaderText = "ISBN";
             this.colISBN.MinimumWidth = 6;
             this.colISBN.Name = "colISBN";
+            this.colISBN.ReadOnly = true;
             this.colISBN.Width = 125;
             // 
             // colTitulo
@@ -99,6 +101,7 @@
             this.colTitulo.HeaderText = "Titulo";
             this.colTitulo.MinimumWidth = 6;
             this.colTitulo.Name = "colTitulo";
+            this.colTitulo.ReadOnly = true;
             this.colTitulo.Width = 150;
             // 
             // colAutor
@@ -106,6 +109,7 @@
             this.colAutor.HeaderText = "Autor";
             this.colAutor.MinimumWidth = 6;
             this.colAutor.Name = "colAutor";
+            this.colAutor.ReadOnly = true;
             this.colAutor.Width = 150;
             // 
             // colPrecio
@@ -113,6 +117,7 @@
             this.colPrecio.HeaderText = "Precio";
             this.colPrecio.MinimumWidth = 6;
             this.colPrecio.Name = "colPrecio";
+            this.colPrecio.ReadOnly = true;
             this.colPrecio.Width = 75;
             // 
             // colStock
@@ -120,6 +125,7 @@
             this.colStock.HeaderText = "Stock";
             this.colStock.MinimumWidth = 6;
             this.colStock.Name = "colStock";
+            this.colStock.ReadOnly = true;
             this.colStock.Width = 75;
             // 
             // colDescripcion
@@ -127,6 +133,7 @@
             this.colDescripcion.HeaderText = "Descripcion";
             this.colDescripcion.MinimumWidth = 6;
             this.colDescripcion.Name = "colDescripcion";
+            this.colDescripcion.ReadOnly = true;
             this.colDescripcion.Width = 350;
             // 
             // colActivo
@@ -134,6 +141,7 @@
             this.colActivo.HeaderText = "Estatus";
             this.colActivo.MinimumWidth = 6;
             this.colActivo.Name = "colActivo";
+            this.colActivo.ReadOnly = true;
             this.colActivo.Width = 75;
             // 
             // btnActualizar

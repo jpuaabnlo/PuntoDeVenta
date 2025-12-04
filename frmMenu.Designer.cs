@@ -37,9 +37,9 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.pnlContainer = new System.Windows.Forms.Panel();
             this.pnlUserInfo = new System.Windows.Forms.Panel();
-            this.lblRol = new System.Windows.Forms.Label();
-            this.lblUsername = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblRol = new System.Windows.Forms.Label();
             this.pnlMenu.SuspendLayout();
             this.flpOpcionesMenu.SuspendLayout();
             this.pnlUserInfo.SuspendLayout();
@@ -100,6 +100,7 @@
             this.btnReportes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnReportes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnProductos
             // 
@@ -171,17 +172,17 @@
             this.pnlUserInfo.Size = new System.Drawing.Size(150, 153);
             this.pnlUserInfo.TabIndex = 2;
             // 
-            // lblRol
+            // lblNombre
             // 
-            this.lblRol.AutoSize = true;
-            this.lblRol.BackColor = System.Drawing.Color.Transparent;
-            this.lblRol.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRol.ForeColor = System.Drawing.Color.White;
-            this.lblRol.Location = new System.Drawing.Point(5, 4);
-            this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(39, 22);
-            this.lblRol.TabIndex = 0;
-            this.lblRol.Text = "Rol:";
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombre.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.ForeColor = System.Drawing.Color.White;
+            this.lblNombre.Location = new System.Drawing.Point(5, 71);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(74, 22);
+            this.lblNombre.TabIndex = 2;
+            this.lblNombre.Text = "Nombre:";
             // 
             // lblUsername
             // 
@@ -195,17 +196,17 @@
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "Username:";
             // 
-            // lblNombre
+            // lblRol
             // 
-            this.lblNombre.AutoSize = true;
-            this.lblNombre.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombre.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.ForeColor = System.Drawing.Color.White;
-            this.lblNombre.Location = new System.Drawing.Point(5, 71);
-            this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(74, 22);
-            this.lblNombre.TabIndex = 2;
-            this.lblNombre.Text = "Nombre:";
+            this.lblRol.AutoSize = true;
+            this.lblRol.BackColor = System.Drawing.Color.Transparent;
+            this.lblRol.Font = new System.Drawing.Font("Sylfaen", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRol.ForeColor = System.Drawing.Color.White;
+            this.lblRol.Location = new System.Drawing.Point(5, 4);
+            this.lblRol.Name = "lblRol";
+            this.lblRol.Size = new System.Drawing.Size(39, 22);
+            this.lblRol.TabIndex = 0;
+            this.lblRol.Text = "Rol:";
             // 
             // frmMenu
             // 
