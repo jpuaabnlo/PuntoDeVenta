@@ -17,7 +17,11 @@ namespace PuntoDeVenta
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+
+            // Cargar datos iniciales de los productos en el DataGridView
             DatosIniciales();
+
+            // Configurar visibilidad y estado de los botones según el rol del usuario
             btnActualizar.Visible = Sesion.EmpleadoActual.SuperUser;
             btnBorrar.Visible = Sesion.EmpleadoActual.SuperUser;
             btnActualizar.Enabled = false;
@@ -34,6 +38,7 @@ namespace PuntoDeVenta
 
         private void LlenarGrid(List<Libro> libros)
         {
+            // Lógica para llenar el DataGridView con datos de libros
             dgvLibros.Rows.Clear();
             if (libros == null)
                 return;
@@ -60,20 +65,27 @@ namespace PuntoDeVenta
             if (e.KeyCode == Keys.Enter)
             {
                 string keyword = txtBuscar.Text.Trim();
+
                 if (keyword == "")
                 {
                     dgvLibros.Rows.Clear();
                     DatosIniciales();
                     return;
                 }
+
+                // Buscar libros
                 Conexion conexion = new Conexion();
                 List<Libro> libros = conexion.FindLibro(keyword);
+                
+                // Mostrar mensaje si no se encuentran libros
                 if (libros == null || libros.Count == 0)
                 {
                     dgvLibros.Rows.Clear();
                     lblErrorLibro.Text = "No se encontraron libros con el término \"" + keyword + "\"";
                     lblErrorLibro.Visible = true;
                 }
+
+                // Llenar el DataGridView con los libros encontrados
                 LlenarGrid(libros);
             }
         }
@@ -102,6 +114,7 @@ namespace PuntoDeVenta
 
         private void btnCrear_Click(object sender, EventArgs e)
         {
+            // Abrir el formulario de detalle de libro en modo creación
             using (frmDetalleLibro frm = new frmDetalleLibro())
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -111,6 +124,7 @@ namespace PuntoDeVenta
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
+            // Abrir el formulario de detalle de libro con los datos del libro seleccionado
             using (frmDetalleLibro frm = new frmDetalleLibro(
                 new Libro
                 (
@@ -133,6 +147,7 @@ namespace PuntoDeVenta
 
         private void btnBorrar_Click(object sender, EventArgs e)
         {
+            // Eliminar el libro seleccionado en el DataGridView
             string isbn = dgvLibros.SelectedRows[0].Cells["colISBN"].Value.ToString();
             Conexion conexion = new Conexion();
             conexion.EliminarLibro(isbn);

@@ -39,6 +39,13 @@ namespace PuntoDeVenta
             pantalla.Dock = DockStyle.Fill;
             pnlContainer.Controls.Add(pantalla);
         }
+
+        /// <summary>
+        /// Actualiza la interfaz de usuario para reflejar la pantalla actual seleccionada.
+        /// </summary>
+        /// <remarks>Este método cambia las imágenes de los botones y su estado habilitado
+        /// según la pantalla seleccionada. Deshabilita el botón correspondiente a la pantalla
+        /// actual y habilita los demás.</remarks>
         private void PantallaActual(string pantalla)
         {
             if(pantalla == "Ventas")

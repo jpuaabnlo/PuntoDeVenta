@@ -18,12 +18,14 @@ namespace PuntoDeVenta
             DateTime ini = dtpInicio.Value;
             DateTime fin = dtpFin.Value;
 
+            
             if (ini.Date > fin.Date)
             {
                 MessageBox.Show("La fecha de inicio no puede ser mayor que la fecha fin.", "Error de fechas", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
+            // Asigna el tipo de Reporte a generar
             if(chkLibros.Checked)
             {
                 tipoReporte = "LibrosVendidos";
@@ -38,6 +40,7 @@ namespace PuntoDeVenta
                 return;
             }
 
+            // Se genera la tabla del tipo y se regresa como párametro
             Conexion conexion = new Conexion();
             DataTable reporteVentas = conexion.GenerarReporteVentas(ini, fin, tipoReporte);
 

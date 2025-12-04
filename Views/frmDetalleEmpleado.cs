@@ -10,12 +10,6 @@ using System.Windows.Forms;
 
 namespace PuntoDeVenta
 {
-    /// <summary>
-    /// Represents a form for creating or updating employee details.
-    /// </summary>
-    /// <remarks>This form allows users to input and modify employee information, including name, username, 
-    /// password, and status. It supports both creating new employees and updating existing ones. The form validates
-    /// input fields, such as ensuring passwords match and checking for duplicate usernames.</remarks>
     public partial class frmDetalleEmpleado : Form
     {
         private int? idEmpleado = null;
@@ -25,14 +19,6 @@ namespace PuntoDeVenta
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="frmDetalleEmpleado"/> class with the specified employee
-        /// details.
-        /// </summary>
-        /// <remarks>This constructor initializes the form, makes the status checkbox visible, and
-        /// populates the form fields with the values from the provided <paramref name="empleado"/> object. The
-        /// employee's ID is also stored for further use.</remarks>
-        /// <param name="empleado">The <see cref="Empleado"/> object containing the details of the employee to display.</param>
         public frmDetalleEmpleado(Empleado empleado)
         {
             InitializeComponent();
@@ -54,6 +40,13 @@ namespace PuntoDeVenta
             btnGuardar.BackColor = Color.GreenYellow;
         }
 
+        /// <summary>
+        /// Verifica que los campos de entrada sean correctos y estén completos.
+        /// </summary>
+        /// <remarks>Este método comprueba si los campos obligatorios están rellenos y si los campos de contraseña 
+        /// y confirmar contraseña coinciden. Si alguna validación falla, resalta los campos relevantes 
+        /// y muestra un mensaje de error.</remarks>
+        /// <returns>True si todas las validaciones pasan; de lo contrario, false.</returns>
         private bool Verificar()
         {
             string username = txtUsername.Text.Trim();
@@ -91,6 +84,11 @@ namespace PuntoDeVenta
             return true;
         }
 
+
+        /// <summary>
+        /// Maneja el evento de clic del botón "Guardar". Valida los campos de entrada y
+        /// ya sea actualiza un empleado existente o crea uno nuevo según el texto del botón.
+        /// </summary>
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!Verificar()) 
