@@ -59,7 +59,7 @@ namespace PuntoDeVenta
             {
                 btnReportes.Image = Properties.Resources.imgReporteSel;
                 if (btnVentas.Image != Properties.Resources.imgVenta)
-                    btnReportes.Image = Properties.Resources.imgReporte;
+                    btnVentas.Image = Properties.Resources.imgVenta;
                 if (btnProductos.Image != Properties.Resources.imgLibro)
                     btnProductos.Image = Properties.Resources.imgLibro;
                 if (btnEmpleados.Image != Properties.Resources.imgEmpleado)
@@ -128,6 +128,13 @@ namespace PuntoDeVenta
         private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            PantallaActual("Reportes");
+            UC_Reportes pantalla = new UC_Reportes();
+            Pantalla(pantalla);
         }
     }
 }

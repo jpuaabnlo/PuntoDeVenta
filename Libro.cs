@@ -32,5 +32,6 @@ namespace PuntoDeVenta
             Stock = stock;
             Activo = activo;
         }
+
     }
 }

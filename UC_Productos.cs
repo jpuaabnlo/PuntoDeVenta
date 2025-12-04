@@ -138,5 +138,10 @@ namespace PuntoDeVenta
             conexion.EliminarLibro(isbn);
             DatosIniciales();
         }
+
+        private void dgvLibros_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnActualizar_Click(sender, e);
+        }
     }
 }
